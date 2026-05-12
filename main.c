@@ -6,10 +6,11 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 00:56:28 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 01:01:52 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 
 static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc]);
@@ -73,7 +74,7 @@ static t_config	split_args(
 	while (*(arr + *size))
 		*size = *size + 1;
 	if (argc - i)
-		set_arr(*arr, join_arr(*arr, argv + i + 1, *size, argc - 1 - i));
+		set_arr(arr, *join_arr(*arr, argv + i + 1, *size, argc - 1 - i));
 	*size += (argc - 1 - i);
 	return (config);
 }

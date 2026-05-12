@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 00:53:41 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 01:02:54 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_config
 
 typedef struct s_tuple
 {
-	int value;
-	int rank;
+	int	value;
+	int	rank;
 }	t_tuple;
 
 typedef struct s_stack
