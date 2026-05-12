@@ -6,16 +6,47 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/12 22:17:08 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 00:56:28 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_arr(char ***str, char *value)
+static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc]);
+static t_config	split_args(
+					int argc, char *argv[argc], char ***arr, int *size);
+static void		set_arr(char ***str, char *value);
+static char		**join_arr(
+					char **arr1, char **arr2, int size_arr1, int size_arr2);
+
+int	main(int argc, char *argv[argc])
 {
-	free(**str);
-	**str = value;
+	t_stack		a;
+	t_stack		b;
+	t_config	config;
+
+	config = init(&a, &b, argc - 1, argv + 1);
+	return (0);
+}
+
+static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc])
+{
+	t_config	config;
+	char		**arr;
+	int			size;
+
+	config = split_args(argc, argv, &arr, &size);
+	a->max_size = size;
+	a->size = a->max_size;
+	a->array = malloc(size * sizeof(t_tuple));
+	a->start = 0;
+	a->end = size - 1;
+	b->size = 0;
+	b->array = malloc(size * sizeof(t_tuple));
+	b->start = 0;
+	b->end = 0;
+	b->max_size = a->max_size;
+	return (config);
 }
 
 static t_config	split_args(
@@ -24,19 +55,20 @@ static t_config	split_args(
 	t_config	config;
 	int			i;
 
-	i = 1;
-	if (ft_strstr(argv[i - 1], "--simple"))
+	i = 0;
+	if (ft_strstr(argv[i], "--bench") && ++i)
+		config.is_bench_mode = 1;
+	if (ft_strstr(argv[i], "--simple") && ++i)
 		config.mode = SIMPLE;
-	else if (ft_strstr(argv[i - 1], "--medium"))
+	else if (ft_strstr(argv[i], "--medium") && ++i)
 		config.mode = MEDIUM;
-	else if (ft_strstr(argv[i - 1], "--complex"))
+	else if (ft_strstr(argv[i], "--complex") && ++i)
 		config.mode = COMPLEX;
-	else if (ft_strstr(argv[i - 1], "--adaptive"))
+	else if (ft_strstr(argv[i], "--adaptive") && ++i)
 		config.mode = ADAPTIVE;
 	else
-		i--;
-	i++;
-	*arr = ft_split(argv[argc - i], ' ');
+		config.mode = ADAPTIVE;
+	*arr = ft_split(argv[i], ' ');
 	*size = 0;
 	while (*(arr + *size))
 		*size = *size + 1;
@@ -46,21 +78,10 @@ static t_config	split_args(
 	return (config);
 }
 
-static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc])
+static void	set_arr(char ***str, char *value)
 {
-	t_config	mode;
-	char		**arr;
-	int			size;
-
-	mode = split_args(argc, argv, arr, &size);
-	a->size = size;
-	a->array = malloc(size);
-	a->start = 0;
-	a->end = size - 1;
-	b->size = 0;
-	b->array = malloc(size);
-	b->start = 0;
-	b->end = 0;
+	free(**str);
+	**str = value;
 }
 
 static char	**join_arr(char **arr1, char **arr2, int size_arr1, int size_arr2)
@@ -82,14 +103,4 @@ static char	**join_arr(char **arr1, char **arr2, int size_arr1, int size_arr2)
 		i++;
 	}
 	return (new_arr);
-}
-
-int	main(int argc, char *argv[argc])
-{
-	t_stack		a;
-	t_stack		b;
-	t_config	config;
-
-	config = init(&a, &b, argc - 1, argv);
-	return (0);
 }
