@@ -6,10 +6,11 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 16:32:31 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 18:27:35 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
 // int compute_disorder(stack a):
 // mistakes = 0
@@ -21,7 +22,7 @@
 // mistakes += 1
 // return (mistakes / total_pairs);
 
-#include "push_swap.h"
+
 
 float	ft_disorder(t_stack a)
 {
@@ -30,6 +31,8 @@ float	ft_disorder(t_stack a)
 	int	i;
 	int	j;
 
+	if (a.size < 2)
+		return (0);
 	i = 0;
 	misatkes = 0;
 	total_pairs = 0;
@@ -37,12 +40,15 @@ float	ft_disorder(t_stack a)
 	while (i < a.size - 1)
 	{
 		j = i + 1;
-		while (j < a.size - 1)
+		while (j <= a.size - 1)
 		{
 			total_pairs = total_pairs + 1;
-			if (a. > a[j])
+
+			if (ft_get_stack(a, i)->value > ft_get_stack(a, j)->value)
 				misatkes = misatkes + 1;
+			j++;
 		}
+		i++;
 	}
 	return (((float) misatkes) / total_pairs);
 }
