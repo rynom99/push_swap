@@ -10,7 +10,6 @@ FILES = ft_get_stack.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
 	ft_strcmp.c \
-	ft_strstr.c \
 	ft_printf.c \
 	ft_putstr.c \
 	ft_putnbr.c \

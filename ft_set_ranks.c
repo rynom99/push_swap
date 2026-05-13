@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.c                                             :+:      :+:    :+:   */
+/*   ft_set_ranks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 19:48:21 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:21:53 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_set_ranks(t_stack *a)
 {
 	int	*temp;
 	int	i;
-	int	j;
 
 	temp = malloc(sizeof(int) * a->size);
 	if (!temp)
@@ -98,55 +97,8 @@ void	ft_set_ranks(t_stack *a)
 
 // int find_min_index(t_stack *a)
 // {
-static void	bubble_sort( int *temp, t_stack *a)
-{
-	int	swap;
-	int	i;
-	int	j;
 
-	i = 0;
-	while (i < a->size - 1)
-	{
-		j = 0;
-		while (j < a->size - i - 1)
-		{
-			if (temp[j] > temp[j + 1])
-			{
-				swap = temp[j];
-				temp[j] = temp[j + 1];
-				temp[j + 1] = swap;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-static void	compare_stack_values_to_sorted_array(t_stack *a, int *temp)
-{
-	int		i;
-	int		j;
-	t_tuple	*current_item;
-
-	i = 0;
-	while (i < a->size)
-	{
-		current_item = ft_get_stack(a, i);
-		j = 0;
-		while (j < a->size)
-		{
-			if (current_item->value == temp[j])
-			{
-				current_item->rank = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	ft_set_ranks(t_stack *a)
+//void	ft_set_ranks(t_stack *a)
 
 //     int min_val = 2147483647; // INT_MAX
 //     int min_pos = -1;

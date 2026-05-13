@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 21:00:29 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:22:39 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,17 @@ int		ft_isdigit(int c);
 float	ft_disorder(t_stack a);
 void	sa(t_stack *a);
 void	sb(t_stack *a);
-void	ss(t_stack *a);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 void	ft_set_ranks(t_stack *a);
+//void	algo_medium(t_stack *stack_a, t_stack *stack_b);
 
 
 #endif

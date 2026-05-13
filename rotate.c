@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:41:49 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 22:11:20 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:23:50 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	rotate(t_stack *stack)
 {
-	t_tuple	**result;
+	t_tuple	*result;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -36,7 +36,7 @@ static void	rotate(t_stack *stack)
 
 static void	reverse_rotete(t_stack *stack)
 {
-	t_tuple	**result;
+	t_tuple	*result;
 
 	if (!stack || stack->size < 2)
 		return ;
