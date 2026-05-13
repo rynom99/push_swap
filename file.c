@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 15:48:12 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 16:32:31 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ float	ft_disorder(t_stack a)
 		while (j < a.size - 1)
 		{
 			total_pairs = total_pairs + 1;
-			if (a[i] > a[j])
+			if (a. > a[j])
 				misatkes = misatkes + 1;
 		}
 	}
@@ -71,18 +71,86 @@ float	ft_disorder(t_stack a)
 //     return (min_pos);
 // }
 
-int	find_minimum_number_index(t_stack a)
-{
-	int	i;
-	int	small;
+// int	find_minimum_number_index(t_stack a)
+// {
+// 	int	i;
+// 	int	small;
 
-	i = a.start;
-	small = a.array[a.start];
-	while (i < a.e)
+// 	i = a.start;
+// 	small = a.array[a.start];
+// 	while (i < a.e)
+// 	{
+// 		if (a.array[i] < small)
+// 			small = i;
+// 		i ++;
+// 	}
+// 	return (small);
+// }
+
+void	bubble_sort( int *temp, t_stack *a)
+{
+	int	swap;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < a->size - 1)
 	{
-		if (a.array[i] < small)
-			small = i;
-		i ++;
+		j = 0;
+		while (j < a->size - i - 1)
+		{
+			if (temp[j] > temp[j + 1])
+			{
+				swap = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = swap;
+			}
+			j++;
+		}
+		i++;
 	}
-	return (small);
+}
+
+void	compare_stack_values_to_sorted_array(t_stack *a, int *temp)
+{
+	int		i;
+	int		j;
+	t_tuple	*current_item;
+
+	i = 0;
+	while (i < a->size)
+	{
+		current_item = ft_get_stack(*a, i);
+		j = 0;
+		while (j < a->size)
+		{
+			if (current_item->value == temp[j])
+			{
+				current_item->rank = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	ft_set_ranks(t_stack *a)
+{
+	int	*temp;
+	int	i;
+	int	j;
+
+	temp = malloc(sizeof(int) * a->size);
+	if (!temp)
+		return ;
+	i = 0;
+	while (i < a->size)
+	{
+		temp[i] = ft_get_stack(*a, i)->value;
+		i++;
+	}
+	bubble_sort(temp, a);
+	compare_stack_values_to_sorted_array(a, temp);
+	free(temp);
 }
