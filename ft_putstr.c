@@ -6,11 +6,10 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 14:14:34 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 14:43:26 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 19:33:53 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "push_swap.h"
 
 int	ft_putstr(char *s)

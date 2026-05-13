@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   swapz.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:36:03 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 18:49:21 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 19:37:51 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+static void	swap(t_stack *stack)
 {
 	t_tuple	*first;
 	t_tuple	*second;
@@ -20,8 +20,8 @@ void	swap(t_stack *stack)
 
 	if (!stack || stack->size < 2)
 		return ;
-	first = ft_get_stack(*stack, 0);
-	second = ft_get_stack(*stack, 1);
+	first = ft_get_stack(stack, 0);
+	second = ft_get_stack(stack, 1);
 	temp = *first;
 	*first = *second;
 	*second = temp;
@@ -45,4 +45,3 @@ void	ss(t_stack *a, t_stack *b)
 	swap(b);
 	write(1, "ss\n", 3);
 }
-

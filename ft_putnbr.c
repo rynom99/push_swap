@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "push_swap.h"
 #include <limits.h>
 
 int	ft_putnbr(int len, int n)

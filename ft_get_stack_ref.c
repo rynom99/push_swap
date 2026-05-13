@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_stack.c                                     :+:      :+:    :+:   */
+/*   ft_get_stack_ref.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 00:30:55 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 19:06:04 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/13 19:04:09 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/13 19:04:30 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_tuple	**ft_get_stack(t_stack *stack, int index)
+t_tuple	**ft_get_stack_ref(t_stack *stack, int index)
 {
-	return (*(ft_get_stack_ref(stack, index)));
+	return (stack->array + ((index + stack->start) % stack->max_size));
 }

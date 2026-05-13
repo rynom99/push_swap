@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 18:30:23 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 21:01:22 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,27 @@ int	main(int argc, char *argv[argc])
 	t_stack		a;
 	t_stack		b;
 	t_config	config;
+	float		disorder;
 
 	config = init(&a, &b, argc - 1, argv + 1);
 	if (!config.is_valid)
 	{
 		ft_printf("Error\n");
-		return (1);
+		return (ERROR);
 	}
+	disorder = ft_disorder(a);
+	if (config.mode == ADAPTIVE || config.is_bench_mode)
+		ft_printf("disorder = %d %", 100 * disorder);
+	if (config.mode == ADAPTIVE)
+	{
+		if (disorder < 0.2)
+			config.mode = SIMPLE;
+		else if (disorder < 0.5)
+			config.mode = MEDIUM;
+		else
+			config.mode = COMPLEX;
+	}
+	// if (config.mode == SIMPLE)
 	return (0);
 }
 
@@ -73,17 +87,17 @@ static t_config	split_args(
 	t_config	config;
 	int			i;
 
-	config.is_valid = TRUE;
 	i = 0;
-	if (ft_strstr(argv[i], "--bench") && ++i)
+	config.is_valid = TRUE;
+	if (!ft_strcmp(argv[i], "--bench") && ++i)
 		config.is_bench_mode = TRUE;
-	if (ft_strstr(argv[i], "--simple") && ++i)
+	if (!ft_strcmp(argv[i], "--simple") && ++i)
 		config.mode = SIMPLE;
-	else if (ft_strstr(argv[i], "--medium") && ++i)
+	else if (!ft_strcmp(argv[i], "--medium") && ++i)
 		config.mode = MEDIUM;
-	else if (ft_strstr(argv[i], "--complex") && ++i)
+	else if (!ft_strcmp(argv[i], "--complex") && ++i)
 		config.mode = COMPLEX;
-	else if (ft_strstr(argv[i], "--adaptive") && ++i)
+	else if (!ft_strcmp(argv[i], "--adaptive") && ++i)
 		config.mode = ADAPTIVE;
 	else
 		config.mode = ADAPTIVE;
@@ -141,6 +155,5 @@ static int	str_to_tuple(int index, t_tuple **tuple, void *arr)
 	*tuple = malloc(sizeof(t_tuple));
 	(*tuple)->rank = 0;
 	(*tuple)->value = ft_atoi(str);
-	ft_atoi(str);
 	return (0);
 }

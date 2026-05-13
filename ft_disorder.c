@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_disorder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 20:34:40 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/12 20:41:34 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/13 19:20:27 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/13 19:21:33 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strstr(const char *big, const char *little)
+float	ft_disorder(t_stack a)
 {
-	size_t	i;
-	size_t	size_big;
-	size_t	size_little;
+	int	misatkes;
+	int	total_pairs;
+	int	i;
+	int	j;
 
-	if (little[0] == 0)
-		return ((char *)big);
-	size_little = ft_strlen(little);
-	size_big = ft_strlen(big);
-	if (size_big < size_little)
-		return (NULL);
+	if (a.size < 2)
+		return (0);
 	i = 0;
-	while (size_big >= size_little)
+	misatkes = 0;
+	total_pairs = 0;
+	while (i < a.size - 1)
 	{
-		if (!ft_strncmp(big + i, little, size_little))
-			break ;
+		j = i + 1;
+		while (j <= a.size - 1)
+		{
+			total_pairs = total_pairs + 1;
+
+			if (ft_get_stack(&a, i)->value > ft_get_stack(&a, j)->value)
+				misatkes = misatkes + 1;
+			j++;
+		}
 		i++;
-		size_big--;
 	}
-	return ((char *)big + i);
+	return (((float) misatkes) / total_pairs);
 }

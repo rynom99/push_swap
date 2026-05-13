@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   agor1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 18:49:35 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 21:03:04 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 	i = 0;
 	while (a->size > 0)
 	{
-		if (ft_get_stack(*a, 0)->rank <= i)
+		if (ft_get_stack(a, 0)->rank <= i)
 		{
 			pb(a, b);
 			i++;
 		}
-		else if (ft_get_stack(*a, 0)->rank <= (i + chunk_size))
+		else if (ft_get_stack(a, 0)->rank <= (i + chunk_size))
 		{
 			pb(a, b);
 			rb(b);
@@ -63,7 +63,7 @@ int	find_rank_position(t_stack *stack, int target_rank)
 	i = 0;
 	while (i < stack->size)
 	{
-		if (ft_get_stack(*stack, i)->rank == target_rank)
+		if (ft_get_stack(stack, i)->rank == target_rank)
 			return (i);
 		i++;
 	}
