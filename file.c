@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 01:05:59 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:48:12 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 
 #include "push_swap.h"
 
-float ft_disorder(t_stack a)
+float	ft_disorder(t_stack a)
 {
-	int misatkes;
-	int total_pairs;
-	int i;
-	int j;
+	int	misatkes;
+	int	total_pairs;
+	int	i;
+	int	j;
 
 	i = 0;
 	misatkes = 0;
