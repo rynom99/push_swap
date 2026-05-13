@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:36:03 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 16:41:09 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/13 18:49:21 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,4 @@ void	ss(t_stack *a, t_stack *b)
 	swap(b);
 	write(1, "ss\n", 3);
 }
-// rotation
 
-void	rotate(t_stack *stack)
-{
-	if (!stack || stack->size < 2)
-		return ;
-	stack->start = (stack->start + 1) % stack->max_size;
-}
-
-void	ra(t_stack *a)
-{
-	rotate(a);
-	write(1, "ra\n", 3);
-}
