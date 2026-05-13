@@ -4,7 +4,7 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_get_stack.c \
-	ft_map_stack.c \
+	ft_foreach_stack.c \
 	ft_split.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
@@ -14,6 +14,8 @@ FILES = ft_get_stack.c \
 	ft_putstr.c \
 	ft_putnbr.c \
 	ft_putchar.c \
+	ft_atoi.c \
+	ft_isdigit.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)

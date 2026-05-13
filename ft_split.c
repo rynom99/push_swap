@@ -6,11 +6,10 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:11:27 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 00:50:29 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 16:22:25 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
 
 static int		get_nr_str(char const *s, char c);

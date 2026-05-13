@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 14:46:27 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 16:22:45 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
+# include <stdlib.h>
+
+# define TRUE 1
+# define FALSE 0
+# define ERROR -1
 
 enum e_mode
 {
@@ -42,7 +47,7 @@ typedef struct s_stack
 	int		end;
 	int		max_size;
 	int		size;
-	t_tuple	*array;
+	t_tuple	**array;
 }	t_stack;
 
 size_t	ft_strlen(const char *s);
@@ -50,10 +55,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strstr(const char *big, const char *little);
 char	**ft_split(char const *s, char c);
-t_tuple	*ft_get_stack(t_stack stack, int index);
-void	ft_map_stack(t_stack stack, int *(*fn)(int, t_tuple*));
+t_tuple	**ft_get_stack(t_stack *stack, int index);
+int		ft_foreach_stack(
+			t_stack *stack,
+			int (*fn)(int, t_tuple**, void*),
+			void *extra);
 int		ft_putstr(char *s);
 int		ft_putnbr(int len, int n);
 int		ft_putchar(char c);
 int		ft_printf(const char *str, ...);
+int		ft_atoi(const char *nptr);
+int		ft_isdigit(int c);
 #endif
