@@ -9,7 +9,7 @@ FILES = ft_get_stack.c \
 	ft_split.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
-	ft_strncmp.c \
+	ft_strcmp.c \
 	ft_strstr.c \
 	ft_printf.c \
 	ft_putstr.c \
@@ -18,10 +18,10 @@ FILES = ft_get_stack.c \
 	ft_atoi.c \
 	ft_isdigit.c \
 	ft_disorder.c \
-	swap.c \
 	ft_set_ranks.c \
+	push.c \
+	swap.c \
 	rotate.c \
-
 	main.c
 
 OBJECTS = $(FILES:.c=.o)

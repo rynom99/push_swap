@@ -1,47 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 16:36:03 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 21:09:20 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/13 22:11:52 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/13 22:14:37 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack *stack)
+void	pa(t_stack *a, t_stack *b)
 {
-	t_tuple	*first;
-	t_tuple	*second;
-	t_tuple	temp;
-
-	if (!stack || stack->size < 2)
-		return ;
-	first = ft_get_stack(stack, 0);
-	second = ft_get_stack(stack, 1);
-	temp = *first;
-	*first = *second;
-	*second = temp;
+	ft_putstr("pa\n");
 }
 
-void	sa(t_stack *a)
+void	pb(t_stack *a, t_stack *b)
 {
-	swap(a);
-	ft_putstr("sa\n");
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	ft_putstr("sb\n");
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	ft_putstr("ss\n");
+	ft_putstr("pb\n");
 }
