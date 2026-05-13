@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_stack.c                                     :+:      :+:    :+:   */
+/*   ft_putchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 00:30:55 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 16:19:33 by mnououal         ###   ########.fr       */
+/*   Created: 2026/04/22 13:14:46 by mnououal          #+#    #+#             */
+/*   Updated: 2026/04/22 13:21:24 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <unistd.h>
 
-t_tuple	**ft_get_stack(t_stack *stack, int index)
+int	ft_putchar(char c)
 {
-	return (stack->array + ((index + stack->start) % stack->max_size));
+	write(1, &c, 1);
+	return (1);
 }

@@ -4,12 +4,18 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_get_stack.c \
-	ft_map_stack.c \
+	ft_foreach_stack.c \
 	ft_split.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
 	ft_strncmp.c \
 	ft_strstr.c \
+	ft_printf.c \
+	ft_putstr.c \
+	ft_putnbr.c \
+	ft_putchar.c \
+	ft_atoi.c \
+	ft_isdigit.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)
@@ -30,4 +36,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean $(NAME) re
+debug: fclean
+	rm -f debug
+	$(CC) $(CFLAGS) -I. $(FILES) -o debug -g
+
+.PHONY: all clean fclean re

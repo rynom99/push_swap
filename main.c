@@ -6,19 +6,19 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 01:01:52 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 18:30:23 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
 
 static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc]);
 static t_config	split_args(
 					int argc, char *argv[argc], char ***arr, int *size);
-static void		set_arr(char ***str, char *value);
+static void		set_arr(char ***str, char **value);
 static char		**join_arr(
 					char **arr1, char **arr2, int size_arr1, int size_arr2);
+static int		str_to_tuple(int index, t_tuple **tuple, void *arr);
 
 int	main(int argc, char *argv[argc])
 {
@@ -27,26 +27,43 @@ int	main(int argc, char *argv[argc])
 	t_config	config;
 
 	config = init(&a, &b, argc - 1, argv + 1);
+	if (!config.is_valid)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	return (0);
 }
 
-static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc])
+static t_config	init(
+					t_stack *stack_a,
+					t_stack *stack_b,
+					int argc,
+					char *argv[argc])
 {
 	t_config	config;
 	char		**arr;
 	int			size;
 
 	config = split_args(argc, argv, &arr, &size);
-	a->max_size = size;
-	a->size = a->max_size;
-	a->array = malloc(size * sizeof(t_tuple));
-	a->start = 0;
-	a->end = size - 1;
-	b->size = 0;
-	b->array = malloc(size * sizeof(t_tuple));
-	b->start = 0;
-	b->end = 0;
-	b->max_size = a->max_size;
+	if (!config.is_valid)
+		return (config);
+	stack_a->max_size = size;
+	stack_a->size = stack_a->max_size;
+	stack_a->array = malloc((size * sizeof(t_tuple*)) + 1);
+	stack_a->array[stack_a->size] = 0;
+	stack_a->start = 0;
+	stack_a->end = size - 1;
+	if (ft_foreach_stack(stack_a, str_to_tuple, arr) == ERROR)
+	{
+		config.is_valid = FALSE;
+		return (config);
+	}
+	stack_b->size = 0;
+	stack_b->array = malloc((size * sizeof(t_tuple*)) + 1);
+	stack_b->start = 0;
+	stack_b->end = 0;
+	stack_b->max_size = stack_a->max_size;
 	return (config);
 }
 
@@ -56,9 +73,10 @@ static t_config	split_args(
 	t_config	config;
 	int			i;
 
+	config.is_valid = TRUE;
 	i = 0;
 	if (ft_strstr(argv[i], "--bench") && ++i)
-		config.is_bench_mode = 1;
+		config.is_bench_mode = TRUE;
 	if (ft_strstr(argv[i], "--simple") && ++i)
 		config.mode = SIMPLE;
 	else if (ft_strstr(argv[i], "--medium") && ++i)
@@ -71,37 +89,58 @@ static t_config	split_args(
 		config.mode = ADAPTIVE;
 	*arr = ft_split(argv[i], ' ');
 	*size = 0;
-	while (*(arr + *size))
+	while (*(*arr + *size))
 		*size = *size + 1;
 	if (argc - i)
-		set_arr(arr, *join_arr(*arr, argv + i + 1, *size, argc - 1 - i));
+		set_arr(arr, join_arr(*arr, argv + i + 1, *size, argc - 1 - i));
 	*size += (argc - 1 - i);
 	return (config);
 }
 
-static void	set_arr(char ***str, char *value)
+static void	set_arr(char ***str, char **value)
 {
-	free(**str);
-	**str = value;
+	free(*str);
+	*str = value;
 }
 
-static char	**join_arr(char **arr1, char **arr2, int size_arr1, int size_arr2)
+static char	**join_arr(char **arr1, char **arr2, int arr1_size, int arr2_size)
 {
 	int		i;
 	char	**new_arr;
 
-	new_arr = malloc((sizeof(char) * size_arr1 * size_arr2) + 1);
+	new_arr = malloc((sizeof(char *) * (arr1_size + arr2_size)) + 1);
 	i = 0;
-	while (i < size_arr1)
+	while (i < arr1_size)
 	{
 		new_arr[i] = arr1[i];
 		i++;
 	}
 	i = 0;
-	while (i < size_arr2)
+	while (i < arr2_size)
 	{
-		new_arr[size_arr1 + i] = arr2[i];
+		new_arr[arr1_size + i] = arr2[i];
 		i++;
 	}
+	new_arr[arr1_size + i] = 0;
 	return (new_arr);
+}
+
+static int	str_to_tuple(int index, t_tuple **tuple, void *arr)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = ((char **)arr)[index];
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (ERROR);
+		i++;
+	}
+	*tuple = malloc(sizeof(t_tuple));
+	(*tuple)->rank = 0;
+	(*tuple)->value = ft_atoi(str);
+	ft_atoi(str);
+	return (0);
 }
