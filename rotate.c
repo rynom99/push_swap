@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:41:49 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 23:23:50 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 00:30:17 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ static void	rotate(t_stack *stack)
 	if (!stack || stack->size < 2)
 		return ;
 
-	result = stack->array[stack->end];
-	if (stack->start == 0)
-		stack->start = stack->max_size;
+	result = stack->array[stack->start];
+	if (stack->start == (stack->max_size - 1))
+		stack->start = 0;
 	else
-		stack->start = stack->start - 1;
+		stack->start = stack->start + 1;
 
-	if (stack->end == 0)
-		stack->end = stack->max_size;
+	if (stack->end == (stack->max_size - 1))
+		stack->end = 0;
 	else
-		stack->end = stack->end - 1;
+		stack->end = stack->end + 1;
 
 	if (stack->max_size != stack->size)
-		stack->array[stack->start] = result;
+		stack->array[stack->end] = result;
 }
 
 static void	reverse_rotete(t_stack *stack)
@@ -41,19 +41,19 @@ static void	reverse_rotete(t_stack *stack)
 	if (!stack || stack->size < 2)
 		return ;
 
-	result = stack->array[stack->start];
-	if (stack->start == stack->max_size)
-		stack->start = 0;
+	result = stack->array[stack->end];
+	if (stack->start == 0)
+		stack->start = (stack->max_size - 1);
 	else
-		stack->start = stack->start + 1;
+		stack->start = stack->start - 1;
 
-	if (stack->end == stack->max_size)
-		stack->end = 0;
+	if (stack->end == 0)
+		stack->end = (stack->max_size - 1);
 	else
-		stack->end = stack->end + 1;
+		stack->end = stack->end - 1;
 
 	if (stack->max_size != stack->size)
-		stack->array[stack->end] = result;
+		stack->array[stack->start] = result;
 }
 
 void	ra(t_stack *a)
@@ -72,7 +72,7 @@ void	rr(t_stack *a, t_stack *b)
 {
 	rotate(a);
 	rotate(b);
-	ft_putstr("rb\n");
+	ft_putstr("rr\n");
 }
 
 void	rra(t_stack *a)

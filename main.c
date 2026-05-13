@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 21:01:22 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 00:13:02 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ static char		**join_arr(
 					char **arr1, char **arr2, int size_arr1, int size_arr2);
 static int		str_to_tuple(int index, t_tuple **tuple, void *arr);
 
+int fn(int a, t_tuple** tuple, void *extra)
+{
+	if(extra || 1)
+		ft_printf("[[%d]-> %d], ", a, (*tuple)->value);
+	return (1);
+}
+
 int	main(int argc, char *argv[argc])
 {
 	t_stack		a;
 	t_stack		b;
 	t_config	config;
-	float		disorder;
+	//float		disorder;
 
 	config = init(&a, &b, argc - 1, argv + 1);
 	if (!config.is_valid)
@@ -33,19 +40,33 @@ int	main(int argc, char *argv[argc])
 		ft_printf("Error\n");
 		return (ERROR);
 	}
-	disorder = ft_disorder(a);
-	if (config.mode == ADAPTIVE || config.is_bench_mode)
-		ft_printf("disorder = %d %", 100 * disorder);
-	if (config.mode == ADAPTIVE)
-	{
-		if (disorder < 0.2)
-			config.mode = SIMPLE;
-		else if (disorder < 0.5)
-			config.mode = MEDIUM;
-		else
-			config.mode = COMPLEX;
-	}
-	// if (config.mode == SIMPLE)
+	ft_foreach_stack(&a, fn, NULL);
+	ft_printf("\n");
+	ra(&a);
+	ft_foreach_stack(&a, fn, NULL);
+	ft_printf("\n");
+	rb(&b);
+	ft_foreach_stack(&a, fn, NULL);
+	ft_printf("\n");
+	pb(&a, &b);
+	ft_foreach_stack(&a, fn, NULL);
+	ft_printf("\n");
+	pa(&a, &b);
+	ft_foreach_stack(&a, fn, NULL);
+	ft_printf("\n");
+	// disorder = ft_disorder(a);
+	// if (config.mode == ADAPTIVE || config.is_bench_mode)
+	// 	ft_printf("disorder = %d %", 100 * disorder);
+	// if (config.mode == ADAPTIVE)
+	// {
+	// 	if (disorder < 0.2)
+	// 		config.mode = SIMPLE;
+	// 	else if (disorder < 0.5)
+	// 		config.mode = MEDIUM;
+	// 	else
+	// 		config.mode = COMPLEX;
+	// }
+	
 	return (0);
 }
 
@@ -64,8 +85,7 @@ static t_config	init(
 		return (config);
 	stack_a->max_size = size;
 	stack_a->size = stack_a->max_size;
-	stack_a->array = malloc((size * sizeof(t_tuple*)) + 1);
-	stack_a->array[stack_a->size] = 0;
+	stack_a->array = malloc(size * sizeof(t_tuple*));
 	stack_a->start = 0;
 	stack_a->end = size - 1;
 	if (ft_foreach_stack(stack_a, str_to_tuple, arr) == ERROR)
@@ -74,7 +94,7 @@ static t_config	init(
 		return (config);
 	}
 	stack_b->size = 0;
-	stack_b->array = malloc((size * sizeof(t_tuple*)) + 1);
+	stack_b->array = malloc(size * sizeof(t_tuple*));
 	stack_b->start = 0;
 	stack_b->end = 0;
 	stack_b->max_size = stack_a->max_size;
