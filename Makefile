@@ -10,6 +10,10 @@ FILES = ft_get_stack.c \
 	ft_strlen.c \
 	ft_strncmp.c \
 	ft_strstr.c \
+	ft_printf.c \
+	ft_putstr.c \
+	ft_putnbr.c \
+	ft_putchar.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)
@@ -30,4 +34,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean $(NAME) re
+.PHONY: all clean fclean re

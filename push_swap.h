@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 01:02:54 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:46:27 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_config
 {
 	enum e_mode	mode;
 	int			is_bench_mode;
+	int			is_valid;
 }	t_config;
 
 typedef struct s_tuple
@@ -51,4 +52,8 @@ char	*ft_strstr(const char *big, const char *little);
 char	**ft_split(char const *s, char c);
 t_tuple	*ft_get_stack(t_stack stack, int index);
 void	ft_map_stack(t_stack stack, int *(*fn)(int, t_tuple*));
+int		ft_putstr(char *s);
+int		ft_putnbr(int len, int n);
+int		ft_putchar(char c);
+int		ft_printf(const char *str, ...);
 #endif

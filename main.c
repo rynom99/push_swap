@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 01:01:52 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:44:25 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	main(int argc, char *argv[argc])
 	t_config	config;
 
 	config = init(&a, &b, argc - 1, argv + 1);
+	if (!config.is_valid)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	return (0);
 }
 
@@ -37,6 +42,8 @@ static t_config	init(t_stack *a, t_stack *b, int argc, char *argv[argc])
 	int			size;
 
 	config = split_args(argc, argv, &arr, &size);
+	if (!config.is_valid)
+		return (config);
 	a->max_size = size;
 	a->size = a->max_size;
 	a->array = malloc(size * sizeof(t_tuple));
