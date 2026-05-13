@@ -36,4 +36,8 @@ fclean: clean
 
 re: fclean all
 
+debug: fclean
+	rm -f debug
+	$(CC) $(CFLAGS) -I. $(FILES) -o debug -g
+
 .PHONY: all clean fclean re
