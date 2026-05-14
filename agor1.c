@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 22:15:38 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:45:48 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ static int	get_chunk_size(int n)
 	return (n / 20);
 }
 
-void	algo_medium(t_stack *stack_a, t_stack *stack_b)
+void	medium_algo(t_stack *stack_a, t_stack *stack_b)
 {
 	int	chunk_size;
 
+	ft_set_ranks(stack_a);
 	chunk_size = get_chunk_size(stack_a->size);
 	push_to_b(stack_a, stack_b, chunk_size);
 	return_to_a(stack_a, stack_b);
-
 }

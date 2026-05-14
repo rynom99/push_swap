@@ -21,6 +21,8 @@ FILES = ft_get_stack.c \
 	push.c \
 	swap.c \
 	rotate.c \
+	algor0.c\
+	agor1.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)

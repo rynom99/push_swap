@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 17:02:58 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:56:21 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,56 @@ static char		**join_arr(
 					char **arr1, char **arr2, int size_arr1, int size_arr2);
 static int		str_to_tuple(int index, t_tuple **tuple, void *arr);
 
+
+int fn(int a, t_tuple** tuple, void *extra)
+{
+	if(extra || 1)
+		ft_printf("{[%d]-> %d}, ", a, (*tuple)->value);
+	return (1);
+}
+
+void print_stack(t_stack stack_a, t_stack stack_b)
+{
+	ft_printf("\n--------------\n");
+	ft_foreach_stack(&stack_a, fn, NULL);
+	ft_printf("\n");
+	ft_foreach_stack(&stack_b, fn, NULL);
+	ft_printf("\n");
+	ft_printf("\n--------------\n");
+}
+
 int	main(int argc, char *argv[argc])
 {
 	t_stack		a;
 	t_stack		b;
 	t_config	config;
-	//float		disorder;
+	float		disorder;
 
 	config = init(&a, &b, argc - 1, argv + 1);
+	//todo check unique
 	if (!config.is_valid)
 	{
 		ft_printf("Error\n");
 		return (ERROR);
 	}
-	// disorder = ft_disorder(a);
-	// if (config.mode == ADAPTIVE || config.is_bench_mode)
-	// 	ft_printf("disorder = %d %", 100 * disorder);
-	// if (config.mode == ADAPTIVE)
-	// {
-	// 	if (disorder < 0.2)
-	// 		config.mode = SIMPLE;
-	// 	else if (disorder < 0.5)
-	// 		config.mode = MEDIUM;
-	// 	else
-	// 		config.mode = COMPLEX;
-	// }
-	
+	disorder = ft_disorder(a);
+	if (config.mode == ADAPTIVE || config.is_bench_mode)
+		ft_printf("disorder = %d %", 100 * disorder);
+	if (config.mode == ADAPTIVE)
+	{
+		if (disorder < 0.2)
+			config.mode = SIMPLE;
+		else if (disorder < 0.5)
+			config.mode = MEDIUM;
+		else
+			config.mode = COMPLEX;
+	}
+	print_stack(a, b);
+	if (config.mode == SIMPLE)
+		simple_algo(&a, &b);
+	else if (config.mode == MEDIUM)
+		medium_algo(&a, &b);
+	print_stack(a, b);
 	return (0);
 }
 
@@ -147,7 +171,7 @@ static int	str_to_tuple(int index, t_tuple **tuple, void *arr)
 	str = ((char **)arr)[index];
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!(ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+') )
 			return (ERROR);
 		i++;
 	}

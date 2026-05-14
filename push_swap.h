@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 23:22:39 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:44:32 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 void	ft_set_ranks(t_stack *a);
-//void	algo_medium(t_stack *stack_a, t_stack *stack_b);
+void	simple_algo(t_stack *stack_a, t_stack *stack_b);
+void	medium_algo(t_stack *stack_a, t_stack *stack_b);
 
 
 #endif
