@@ -23,6 +23,7 @@ FILES = ft_get_stack.c \
 	rotate.c \
 	algor0.c\
 	agor1.c \
+	complex.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)
