@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:11:52 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 00:14:55 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:25:07 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 static void push(t_stack *stack, t_tuple *tuple)
 {
-	if (stack->start == 0)
+	if (stack->size == 0)
+	{
+		stack->start = 0;
+		stack->end = 0;
+	}
+	else if (stack->start == 0)
 		stack->start = (stack->max_size - 1);
 	else
 		stack->start = stack->start - 1;

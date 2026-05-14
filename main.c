@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 00:13:02 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 17:02:58 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ static void		set_arr(char ***str, char **value);
 static char		**join_arr(
 					char **arr1, char **arr2, int size_arr1, int size_arr2);
 static int		str_to_tuple(int index, t_tuple **tuple, void *arr);
-
-int fn(int a, t_tuple** tuple, void *extra)
-{
-	if(extra || 1)
-		ft_printf("[[%d]-> %d], ", a, (*tuple)->value);
-	return (1);
-}
 
 int	main(int argc, char *argv[argc])
 {
@@ -40,20 +33,6 @@ int	main(int argc, char *argv[argc])
 		ft_printf("Error\n");
 		return (ERROR);
 	}
-	ft_foreach_stack(&a, fn, NULL);
-	ft_printf("\n");
-	ra(&a);
-	ft_foreach_stack(&a, fn, NULL);
-	ft_printf("\n");
-	rb(&b);
-	ft_foreach_stack(&a, fn, NULL);
-	ft_printf("\n");
-	pb(&a, &b);
-	ft_foreach_stack(&a, fn, NULL);
-	ft_printf("\n");
-	pa(&a, &b);
-	ft_foreach_stack(&a, fn, NULL);
-	ft_printf("\n");
 	// disorder = ft_disorder(a);
 	// if (config.mode == ADAPTIVE || config.is_bench_mode)
 	// 	ft_printf("disorder = %d %", 100 * disorder);
