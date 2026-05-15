@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 16:48:18 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:04:49 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char *argv[argc])
 	{
 		case3(&a);
 	}
-
 	print_stack(a, b);
 	return (0);
 }

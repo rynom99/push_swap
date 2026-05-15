@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_ranks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 01:59:43 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:08:41 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	find_rank_position(t_stack *stack, int target_rank)
 {
@@ -26,6 +25,7 @@ int	find_rank_position(t_stack *stack, int target_rank)
 	}
 	return (-1);
 }
+
 static void	bubble_sort( int *temp, t_stack *a)
 {
 	int	swap;
@@ -101,8 +101,6 @@ void	ft_set_ranks(t_stack *a)
 // if a[i] > a[j]:
 // mistakes += 1
 // return (mistakes / total_pairs);
-
-
 
 //  first algorithem : check for the minimum element in the stak 
 // chek if it is closer to top or buttom

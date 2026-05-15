@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:20:27 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 19:21:33 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 16:56:37 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ float	ft_disorder(t_stack a)
 		while (j <= a.size - 1)
 		{
 			total_pairs = total_pairs + 1;
-
 			if (ft_get_stack(&a, i)->value > ft_get_stack(&a, j)->value)
 				misatkes = misatkes + 1;
 			j++;

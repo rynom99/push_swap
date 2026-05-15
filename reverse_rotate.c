@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:41:49 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 17:03:47 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:05:05 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_stack *stack)
+static void	reverse_rotate(t_stack *stack)
 {
 	t_tuple	*result;
 
 	if (!stack || stack->size < 2)
 		return ;
-	result = stack->array[stack->start];
-	if (stack->start == (stack->max_size - 1))
-		stack->start = 0;
+	result = stack->array[stack->end];
+	if (stack->start == 0)
+		stack->start = (stack->max_size - 1);
 	else
-		stack->start = stack->start + 1;
-	if (stack->end == (stack->max_size - 1))
-		stack->end = 0;
+		stack->start = stack->start - 1;
+	if (stack->end == 0)
+		stack->end = (stack->max_size - 1);
 	else
-		stack->end = stack->end + 1;
+		stack->end = stack->end - 1;
 	if (stack->max_size != stack->size)
-		stack->array[stack->end] = result;
+		stack->array[stack->start] = result;
 }
 
-void	ra(t_stack *a)
+void	rra(t_stack *a)
 {
-	rotate(a);
-	ft_putstr("ra\n");
+	reverse_rotate(a);
+	ft_putstr("rra\n");
 }
 
-void	rb(t_stack *b)
+void	rrb(t_stack *b)
 {
-	rotate(b);
-	ft_putstr("rb\n");
+	reverse_rotate(b);
+	ft_putstr("rrb\n");
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	rotate(a);
-	rotate(b);
-	ft_putstr("rr\n");
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_putstr("rrr\n");
 }

@@ -23,6 +23,7 @@ FILES = ft_get_stack.c \
 	push.c \
 	swap.c \
 	rotate.c \
+	reverse_rotate.c \
 	algor0.c\
 	agor1.c \
 	ft_push_swap_helper.c \

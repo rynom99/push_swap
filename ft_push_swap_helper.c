@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 15:59:48 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:07:17 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_config	init_app(
 	if (!config.is_valid)
 		return (config);
 	if (!(init_stack(stack_a, size) != ERROR
-		&& init_stack(stack_b, size) != ERROR
-		&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR))
+			&& init_stack(stack_b, size) != ERROR
+			&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR))
 	{
 		free(stack_a->array);
 		if (stack_a->array != NULL)
@@ -73,9 +73,7 @@ static t_config	split_args(
 		set_arr(arr, join_arr(*arr, ft_split(argv[i], ' ')));
 		i++;
 	}
-	*size = 0;
-	while (*(*arr + *size))
-		*size = *size + 1;
+	*size = ft_arr_len(arr);
 	return (config);
 }
 

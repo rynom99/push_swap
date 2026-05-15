@@ -6,13 +6,13 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:11:52 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 18:25:07 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 16:56:59 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push(t_stack *stack, t_tuple *tuple)
+static void	push(t_stack *stack, t_tuple *tuple)
 {
 	if (stack->size == 0)
 	{
@@ -23,7 +23,6 @@ static void push(t_stack *stack, t_tuple *tuple)
 		stack->start = (stack->max_size - 1);
 	else
 		stack->start = stack->start - 1;
-
 	stack->array[stack->start] = tuple;
 	stack->size = stack->size + 1;
 }
