@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 22:18:25 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 00:33:59 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 01:59:45 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	case3(t_stack *a)
 	int	second;
 	int	thired;
 
-	if (ft_disorder(*a) == 0)
+	if (ft_disorder(*a) == 0 && a->size != 3)
 		return ;
 	first = ft_get_stack(a, 0)->value;
 	second = ft_get_stack(a, 1)->value;
@@ -42,4 +42,3 @@ void	case3(t_stack *a)
 	else if ((first < second) && (first > thired) && (second > thired))
 		rra(a);
 }
-

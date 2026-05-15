@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 23:56:45 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 01:59:32 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	rrr(t_stack *a, t_stack *b);
 void	ft_set_ranks(t_stack *a);
 void	simple_algo(t_stack *stack_a, t_stack *stack_b);
 void	medium_algo(t_stack *stack_a, t_stack *stack_b);
+int		find_rank_position(t_stack *stack, int target_rank);
 void	case3(t_stack *a);
+void	simple_algorithem(t_stack *stack_a, t_stack *stack_b);
+
 
 
 #endif

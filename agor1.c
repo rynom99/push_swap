@@ -6,25 +6,11 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/14 19:45:48 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 03:19:58 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	find_rank_position(t_stack *stack, int target_rank)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->size)
-	{
-		if (ft_get_stack(stack, i)->rank == target_rank)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
 
 static void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 {

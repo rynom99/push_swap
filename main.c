@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 23:56:52 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 02:03:56 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char *argv[argc])
 	}
 	print_stack(a, b);
 	if (config.mode == SIMPLE)
-		simple_algo(&a, &b);
+		simple_algorithem(&a, &b);
 	else if (config.mode == MEDIUM)
 		medium_algo(&a, &b);
 	else if (config.mode == COMPLEX)
