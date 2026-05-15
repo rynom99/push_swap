@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 15:30:06 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 15:59:43 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 18:39:14 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	get_sign(const char *nptr, int *i)
 	else if (nptr[*i] == '-')
 	{
 		*i = (*i) + 1;
-		return (FALSE);
+		return (-1);
 	}
-	return (TRUE);
+	return (1);
 }
 
 int	ft_str_to_int32(const char *nptr, int *value)

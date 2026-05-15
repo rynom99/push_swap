@@ -6,13 +6,13 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:49:20 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 16:55:29 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 19:24:27 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	fn(int a, t_tuple **tuple, void *extra)
+static int	fn(int a, t_stack *stack, t_tuple **tuple, void *extra)
 {
 	if (extra || 1)
 		ft_printf("{[%d]-> %d}, ", a, (*tuple)->value);

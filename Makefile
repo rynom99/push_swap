@@ -20,6 +20,8 @@ FILES = ft_get_stack.c \
 	ft_isdigit.c \
 	ft_disorder.c \
 	ft_set_ranks.c \
+	ft_log.c \
+	ft_is_counter_locked.c \
 	push.c \
 	swap.c \
 	rotate.c \

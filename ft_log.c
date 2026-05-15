@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach_stack.c                                 :+:      :+:    :+:   */
+/*   ft_log.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 23:58:22 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 19:26:20 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/15 20:16:43 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/15 20:20:00 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_foreach_stack(
-			t_stack *stack,
-			int (*fn)(int, t_stack*, t_tuple**, void *extra),
-			void *extra)
+int	ft_log_ops(int enable)
 {
-	t_tuple	**element;
-	int		i;
+	static int	print;
 
-	i = 0;
-	while (i < stack->size)
-	{
-		element = ft_get_stack_ref(stack, i);
-		if (fn(i, stack, element, extra) == ERROR)
-		{
-			while (i--)
-			{
-				element = ft_get_stack_ref(stack, i);
-				free(*element);
-			}
-			return (ERROR);
-		}
-		i++;
-	}
-	return (TRUE);
+	if (enable)
+		print = TRUE;
+	return (print);
+}
+
+void	ft_log(char *s)
+{
+	if (ft_log_ops(FALSE))
+		ft_putstr(s);
 }

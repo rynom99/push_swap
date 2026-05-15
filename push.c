@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:11:52 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 16:56:59 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 20:33:06 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,28 @@ static t_tuple	*pop(t_stack *stack)
 	return (tuple);
 }
 
-void	pa(t_stack *a, t_stack *b)
+int	pa(t_stack *a, t_stack *b)
 {
+	static int	i;
+
 	if (a->size == a->max_size)
-		return ;
+		return (i);
 	push(a, pop(b));
-	ft_putstr("pa\n");
+	ft_log("pa\n");
+	if (!ft_is_counter_locked(FALSE))
+		i++;
+	return (i);
 }
 
-void	pb(t_stack *a, t_stack *b)
+int	pb(t_stack *a, t_stack *b)
 {
+	static int	i;
+
 	if (b->size == b->max_size)
-		return ;
+		return (i);
 	push(b, pop(a));
-	ft_putstr("pb\n");
+	ft_log("pb\n");
+	if (!ft_is_counter_locked(FALSE))
+		i++;
+	return (i);
 }

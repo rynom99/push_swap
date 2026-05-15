@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 16:50:57 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 20:24:03 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_tuple		*ft_get_stack(t_stack *stack, int index);
 t_tuple		**ft_get_stack_ref(t_stack *stack, int index);
 int			ft_foreach_stack(
 				t_stack *stack,
-				int (*fn)(int, t_tuple**, void*),
+				int (*fn)(int, t_stack *, t_tuple**, void*),
 				void *extra);
 int			ft_putstr(char *s);
 int			ft_putnbr(int len, int n);
@@ -72,18 +72,21 @@ int			ft_isdigit(int c);
 char		**join_arr(char **arr1, char **arr2);
 void		set_arr(char ***str, char **value);
 int			ft_arr_len(void *arr);
+int			ft_log_ops(int enable);
+void		ft_log(char *s);
+int			ft_is_counter_locked(int lock);
 float		ft_disorder(t_stack a);
-void		sa(t_stack *a);
-void		sb(t_stack *a);
-void		ss(t_stack *a, t_stack *b);
-void		pa(t_stack *a, t_stack *b);
-void		pb(t_stack *a, t_stack *b);
-void		ra(t_stack *a);
-void		rb(t_stack *b);
-void		rr(t_stack *a, t_stack *b);
-void		rra(t_stack *a);
-void		rrb(t_stack *b);
-void		rrr(t_stack *a, t_stack *b);
+int			sa(t_stack *a);
+int			sb(t_stack *a);
+int			ss(t_stack *a, t_stack *b);
+int			pa(t_stack *a, t_stack *b);
+int			pb(t_stack *a, t_stack *b);
+int			ra(t_stack *a);
+int			rb(t_stack *b);
+int			rr(t_stack *a, t_stack *b);
+int			rra(t_stack *a);
+int			rrb(t_stack *b);
+int			rrr(t_stack *a, t_stack *b);
 void		ft_set_ranks(t_stack *a);
 void		simple_algo(t_stack *stack_a, t_stack *stack_b);
 void		medium_algo(t_stack *stack_a, t_stack *stack_b);

@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 17:07:17 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 19:25:20 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int		init_stack(t_stack *stack, int size);
 static t_config	split_args(
 					int argc, char *argv[argc], char ***arr, int *size);
-static int		str_to_tuple(int index, t_tuple **tuple, void *arr);
+static int		str_to_tuple(
+					int index, t_stack *stack, t_tuple **tuple, void *arr);
 static void		manage_adaptive_mode(t_config *config, t_stack *a);
 
 t_config	init_app(
@@ -73,7 +74,7 @@ static t_config	split_args(
 		set_arr(arr, join_arr(*arr, ft_split(argv[i], ' ')));
 		i++;
 	}
-	*size = ft_arr_len(arr);
+	*size = ft_arr_len(*arr);
 	return (config);
 }
 
@@ -109,7 +110,7 @@ static void	manage_adaptive_mode(t_config *config, t_stack *a)
 	}
 }
 
-static int	str_to_tuple(int index, t_tuple **tuple, void *arr)
+static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 {
 	int			i;
 	char		*str;
