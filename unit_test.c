@@ -6,35 +6,17 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:56:01 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 18:05:44 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/14 22:35:03 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int fn(int a, t_tuple** tuple, void *extra)
-{
-	if(extra || 1)
-		ft_printf("{[%d]-> %d}, ", a, (*tuple)->value);
-	return (1);
-}
-
-void print_stack(t_stack stack_a, t_stack stack_b)
-{
-	ft_printf("\n--------------\n");
-	ft_foreach_stack(&stack_a, fn, NULL);
-	ft_printf("\n");
-	ft_foreach_stack(&stack_b, fn, NULL);
-	ft_printf("\n");
-	ft_printf("\n--------------\n");
-}
-
-//cc -Wall -Wextra -Werror -I. ft_get_stack.c ft_get_stack_ref.c ft_foreach_stack.c ft_split.c ft_strlcpy.c ft_strlen.c ft_strcmp.c ft_printf.c ft_putstr.c ft_putnbr.c ft_putchar.c ft_atoi.c ft_isdigit.c ft_disorder.c ft_set_ranks.c push.c swap.c rotate.c unit_test.c -o debug -g
 int	main(void)
 {
 	t_stack stack_a;
 	t_stack stack_b;
-	int size = 10;
+	int 	size = 10;
 
 	stack_a.max_size = size;
 	stack_a.size = stack_a.max_size;

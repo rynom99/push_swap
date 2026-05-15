@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_push_swap_logger.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 00:14:37 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/14 21:49:20 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/14 21:51:21 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[argc])
+static int	fn(int a, t_tuple **tuple, void *extra)
 {
-	t_stack		a;
-	t_stack		b;
-	t_config	config;
+	if (extra || 1)
+		ft_printf("{[%d]-> %d}, ", a, (*tuple)->value);
+	return (1);
+}
 
-	if (argc > 2)
-		return (0);
-	config = init_app(&a, &b, argc - 1, argv + 1);
-	if (!config.is_valid)
-	{
-		ft_printf("Error\n");
-		return (ERROR);
-	}
-	print_stack(a, b);
-	if (config.mode == SIMPLE)
-		simple_algo(&a, &b);
-	else if (config.mode == MEDIUM)
-		medium_algo(&a, &b);
-	print_stack(a, b);
-	return (0);
+void	print_stack(t_stack stack_a, t_stack stack_b)
+{
+	ft_printf("\n%%%%%%%%%%%%%%%%%%%\n");
+	ft_foreach_stack(&stack_a, fn, NULL);
+	ft_printf("\n");
+	ft_foreach_stack(&stack_b, fn, NULL);
+	ft_printf("\n");
+	ft_printf("\n%%%%%%%%%%%%%%%%%%%\n");
 }

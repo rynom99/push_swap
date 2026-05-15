@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/14 19:44:32 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/15 12:20:53 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -26,7 +27,8 @@ enum e_mode
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTIVE
+	ADAPTIVE,
+	DUMB
 };
 
 typedef struct s_config
@@ -51,37 +53,44 @@ typedef struct s_stack
 	t_tuple	**array;
 }	t_stack;
 
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-int		ft_strcmp(const char *s1, const char *s2);
-char	**ft_split(char const *s, char c);
-t_tuple	*ft_get_stack(t_stack *stack, int index);
-t_tuple	**ft_get_stack_ref(t_stack *stack, int index);
-int		ft_foreach_stack(
-			t_stack *stack,
-			int (*fn)(int, t_tuple**, void*),
-			void *extra);
-int		ft_putstr(char *s);
-int		ft_putnbr(int len, int n);
-int		ft_putchar(char c);
-int		ft_printf(const char *str, ...);
-int		ft_atoi(const char *nptr);
-int		ft_isdigit(int c);
-float	ft_disorder(t_stack a);
-void	sa(t_stack *a);
-void	sb(t_stack *a);
-void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
-void	ft_set_ranks(t_stack *a);
-void	simple_algo(t_stack *stack_a, t_stack *stack_b);
-void	medium_algo(t_stack *stack_a, t_stack *stack_b);
-
-
+size_t		ft_strlen(const char *s);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+int			ft_strcmp(const char *s1, const char *s2);
+char		**ft_split(char const *s, char c);
+t_tuple		*ft_get_stack(t_stack *stack, int index);
+t_tuple		**ft_get_stack_ref(t_stack *stack, int index);
+int			ft_foreach_stack(
+				t_stack *stack,
+				int (*fn)(int, t_tuple**, void*),
+				void *extra);
+int			ft_putstr(char *s);
+int			ft_putnbr(int len, int n);
+int			ft_putchar(char c);
+int			ft_printf(const char *str, ...);
+int			ft_str_to_int32(const char *nptr, int *value);
+int			ft_isdigit(int c);
+char		**join_arr(char **arr1, char **arr2);
+void		set_arr(char ***str, char **value);
+int			ft_arr_len(void *arr);
+float		ft_disorder(t_stack a);
+void		sa(t_stack *a);
+void		sb(t_stack *a);
+void		ss(t_stack *a, t_stack *b);
+void		pa(t_stack *a, t_stack *b);
+void		pb(t_stack *a, t_stack *b);
+void		ra(t_stack *a);
+void		rb(t_stack *b);
+void		rr(t_stack *a, t_stack *b);
+void		rra(t_stack *a);
+void		rrb(t_stack *b);
+void		rrr(t_stack *a, t_stack *b);
+void		ft_set_ranks(t_stack *a);
+void		simple_algo(t_stack *stack_a, t_stack *stack_b);
+void		medium_algo(t_stack *stack_a, t_stack *stack_b);
+void		print_stack(t_stack stack_a, t_stack stack_b);
+t_config	init_app(
+				t_stack *stack_a,
+				t_stack *stack_b,
+				int argc,
+				char *argv[argc]);
 #endif
