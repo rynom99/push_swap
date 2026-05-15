@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:45:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 12:26:25 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:59:50 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**join_arr(char **arr1, char **arr2)
 
 	arr1_size = ft_arr_len(arr1);
 	arr2_size = ft_arr_len(arr2);
-	new_arr = malloc((sizeof(char *) * (arr1_size + arr2_size)) + 1);
+	new_arr = malloc(sizeof(char *) * (arr1_size + arr2_size + 1));
 	i = 0;
 	while (i < arr1_size)
 	{

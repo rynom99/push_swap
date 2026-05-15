@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 15:30:06 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 11:34:09 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:59:43 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	ft_str_to_int32(const char *nptr, int *value)
 	{
 		summirizer = (summirizer * 10) + (nptr[i] - '0');
 		i++;
-		if ((((summirizer * is_positive) <= INT_MAX) 
-				&& ((summirizer * is_positive) > INT_MIN))
-			|| (!nptr[i] || ft_isdigit(nptr[i]))
+		if ((((summirizer * is_positive) > INT_MAX) 
+				&& ((summirizer * is_positive) < INT_MIN))
+			|| (nptr[i] && !ft_isdigit(nptr[i]))
 		)
 			return (ERROR);
 	}

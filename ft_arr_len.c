@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 12:14:17 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 12:16:22 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:59:52 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_arr_len(void *arr)
 	int	size;
 
 	size = 0;
-	while (*((char *)arr) + size)
+	while (arr && *((char **)arr + size))
 		size++;
 	return (size);
 }

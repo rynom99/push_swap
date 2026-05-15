@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 00:14:37 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:06:45 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[argc])
 	t_stack		b;
 	t_config	config;
 
-	if (argc > 2)
+	if (argc < 2)
 		return (0);
 	config = init_app(&a, &b, argc - 1, argv + 1);
 	if (!config.is_valid)
