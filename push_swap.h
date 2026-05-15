@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 12:20:53 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 16:50:57 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,8 @@ t_config	init_app(
 				t_stack *stack_b,
 				int argc,
 				char *argv[argc]);
+int			find_rank_position(t_stack *stack, int target_rank);
+void		case3(t_stack *a);
+void		simple_algorithem(t_stack *stack_a, t_stack *stack_b);
+
 #endif

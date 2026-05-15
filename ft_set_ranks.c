@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_ranks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/13 23:21:53 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 01:59:43 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
+int	find_rank_position(t_stack *stack, int target_rank)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->size)
+	{
+		if (ft_get_stack(stack, i)->rank == target_rank)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 static void	bubble_sort( int *temp, t_stack *a)
 {
 	int	swap;

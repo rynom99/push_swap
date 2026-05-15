@@ -27,6 +27,7 @@ FILES = ft_get_stack.c \
 	agor1.c \
 	ft_push_swap_helper.c \
 	ft_push_swap_logger.c \
+	complex.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)

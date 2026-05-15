@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 15:06:45 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/15 16:48:18 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ int	main(int argc, char *argv[argc])
 	}
 	print_stack(a, b);
 	if (config.mode == SIMPLE)
-		simple_algo(&a, &b);
+		simple_algorithem(&a, &b);
 	else if (config.mode == MEDIUM)
 		medium_algo(&a, &b);
+	else if (config.mode == COMPLEX)
+	{
+		case3(&a);
+	}
+
 	print_stack(a, b);
 	return (0);
 }
