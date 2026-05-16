@@ -21,7 +21,6 @@ FILES = ft_get_stack.c \
 	ft_disorder.c \
 	ft_set_ranks.c \
 	ft_log.c \
-	ft_is_counter_locked.c \
 	stack.c \
 	push.c \
 	swap.c \

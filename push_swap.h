@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 19:50:31 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 20:21:18 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void		set_arr(char ***str, char **value);
 int			ft_arr_len(void *arr);
 int			ft_log_ops(int enable);
 void		ft_log(char *s);
-int			ft_is_counter_locked(int lock);
 float		ft_disorder(t_stack a);
 int			sa(t_stack *a);
 int			sb(t_stack *a);

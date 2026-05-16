@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:41:49 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 17:48:43 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 20:18:47 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,32 @@ int	rra(t_stack *a)
 {
 	static int	i;
 
+	if (!a)
+		return (i);
 	reverse_rotate(a);
 	ft_log("rra");
-	if (!ft_is_counter_locked(FALSE))
-		i++;
-	return (i);
+	return (++i);
 }
 
 int	rrb(t_stack *b)
 {
 	static int	i;
 
+	if (!b)
+		return (i);
 	reverse_rotate(b);
 	ft_log("rrb");
-	if (!ft_is_counter_locked(FALSE))
-		i++;
-	return (i);
+	return (++i);
 }
 
 int	rrr(t_stack *a, t_stack *b)
 {
 	static int	i;
 
+	if (!a || !b)
+		return (i);
 	reverse_rotate(a);
 	reverse_rotate(b);
 	ft_log("rrr");
-	if (!ft_is_counter_locked(FALSE))
-		i++;
-	return (i);
+	return (++i);
 }
