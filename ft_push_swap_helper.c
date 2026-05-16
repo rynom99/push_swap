@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 20:33:48 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:53:38 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static int	init_stack(t_stack *stack, int size)
 
 static void	manage_adaptive_mode(t_config *config)
 {
+	if (!config->is_bench_mode)
+		ft_log_ops(TRUE);
 	if (config->mode == ADAPTIVE || config->is_bench_mode)
 		ft_printf("disorder = %d %", 100 * ((int)config->disorder));
 	if (config->mode == ADAPTIVE)

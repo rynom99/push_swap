@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 20:21:18 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:58:10 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ enum e_mode
 	MEDIUM,
 	COMPLEX,
 	ADAPTIVE
+};
+
+enum e_ops
+{
+	LAST,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
 };
 
 typedef struct s_config
@@ -87,6 +103,8 @@ int			rra(t_stack *a);
 int			rrb(t_stack *b);
 int			rrr(t_stack *a, t_stack *b);
 void		ft_set_ranks(t_stack *a);
+void		ft_execute(enum e_ops ops, t_stack *a, t_stack *b);
+void		ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b);
 void		simple_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		medium_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		case2_algorithm(t_stack *a);
