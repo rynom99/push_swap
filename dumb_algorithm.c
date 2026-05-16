@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dumb_solution.c                                    :+:      :+:    :+:   */
+/*   dumb_algorithm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 22:18:25 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 17:13:32 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 19:05:43 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	case3(t_stack *a);
-
-int	need_dumb_solution(t_config *config, t_stack *a)
+void	case2_algorithm(t_stack *a)
 {
-	if (config->disorder == 0)
-		return (TRUE);
-	if (a->size < 4)
-		return (TRUE);
-	return (FALSE);
+	if (ft_get_stack(a, 0)->value > ft_get_stack(a, 1)->value)
+		ra(a);
 }
 
-void	dumb_solution(t_config *config, t_stack *a)
-{
-	if (config->disorder == 0)
-		return ;
-	if (a->size == 3)
-	{
-		case3(a);
-		return ;
-	}
-	ra(a);
-}
-
-static void	case3(t_stack *a)
+void	case3_algorithm(t_stack *a)
 {
 	int	first;
 	int	second;
@@ -44,6 +27,8 @@ static void	case3(t_stack *a)
 	first = ft_get_stack(a, 0)->value;
 	second = ft_get_stack(a, 1)->value;
 	third = ft_get_stack(a, 2)->value;
+	if (first < second && second < third)
+		return ;
 	if (second < third)
 	{
 		if ((first > second) && (first < third))

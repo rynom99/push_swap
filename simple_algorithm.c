@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:58:01 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 18:44:31 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 19:21:08 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,14 @@ static int	get_idx_minimum_value(
 /*
 Simple Algorithm
 get the minimum element in the stack
-check if it is closer to top or buttom
-push it to the nearest edge
-push it to stack b
+push it to stack b until reach size 3
+sort stack a
+push it back all stack a
 */
-void	simple_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b)
+void	simple_algorithm(t_stack *stack_a, t_stack *stack_b)
 {
 	int	idx;
 
-	if (need_dumb_solution(cfg, stack_a))
-	{
-		dumb_solution(cfg, stack_a);
-		return ;
-	}
 	while (stack_a->size > 3)
 	{
 		idx = 0;
@@ -46,6 +41,10 @@ void	simple_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b)
 		}
 		pb(stack_a, stack_b);
 	}
+	if (stack_a->size == 3)
+		case3_algorithm(stack_a);
+	else
+		case2_algorithm(stack_a);
 	idx = stack_b->size;
 	while (idx--)
 		pa(stack_a, stack_b);

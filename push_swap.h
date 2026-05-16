@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 18:12:06 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 19:50:31 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int			rra(t_stack *a);
 int			rrb(t_stack *b);
 int			rrr(t_stack *a, t_stack *b);
 void		ft_set_ranks(t_stack *a);
-void		simple_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b);
-void		medium_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b);
-int			need_dumb_solution(t_config *config, t_stack *a);
-void		dumb_solution(t_config *config, t_stack *a);
+void		simple_algorithm(t_stack *stack_a, t_stack *stack_b);
+void		medium_algorithm(t_stack *stack_a, t_stack *stack_b);
+void		case2_algorithm(t_stack *a);
+void		case3_algorithm(t_stack *a);
 void		print_stack(t_stack stack_a, t_stack stack_b);
 t_config	init_app(
 				t_stack *stack_a,
