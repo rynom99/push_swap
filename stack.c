@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_log.c                                           :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/15 20:16:43 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 17:47:57 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/16 17:28:24 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/16 17:42:25 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_log_ops(int enable)
+void	clean_stack(t_stack *stack)
 {
-	static int	print;
+	t_tuple	**row;
+	size_t	i;
 
-	if (enable)
-		print = TRUE;
-	return (print);
-}
-
-void	ft_log(char *s)
-{
-	if (ft_log_ops(FALSE))
+	if (stack->array == NULL)
+		return ;
+	i = stack->size;
+	while (i--)
 	{
-		ft_putstr(s);
-		ft_putchar('\n');
+		row = ft_get_stack_ref(stack, i);
+		free(*row);
+		*row = NULL;
+		stack->size = stack->size - 1;
 	}
+	free(stack->array);
+	stack->start = 0;
+	stack->end = 0;
+	stack->size = 0;
+	stack->max_size = 0;
+	stack->array = NULL;
 }

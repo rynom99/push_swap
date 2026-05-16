@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 20:24:03 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 18:12:06 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ enum e_mode
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTIVE,
-	DUMB
+	ADAPTIVE
 };
 
 typedef struct s_config
@@ -36,6 +35,7 @@ typedef struct s_config
 	enum e_mode	mode;
 	int			is_bench_mode;
 	int			is_valid;
+	float		disorder;
 }	t_config;
 
 typedef struct s_tuple
@@ -88,8 +88,10 @@ int			rra(t_stack *a);
 int			rrb(t_stack *b);
 int			rrr(t_stack *a, t_stack *b);
 void		ft_set_ranks(t_stack *a);
-void		simple_algo(t_stack *stack_a, t_stack *stack_b);
-void		medium_algo(t_stack *stack_a, t_stack *stack_b);
+void		simple_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b);
+void		medium_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b);
+int			need_dumb_solution(t_config *config, t_stack *a);
+void		dumb_solution(t_config *config, t_stack *a);
 void		print_stack(t_stack stack_a, t_stack stack_b);
 t_config	init_app(
 				t_stack *stack_a,
@@ -97,7 +99,5 @@ t_config	init_app(
 				int argc,
 				char *argv[argc]);
 int			find_rank_position(t_stack *stack, int target_rank);
-void		case3(t_stack *a);
-void		simple_algorithem(t_stack *stack_a, t_stack *stack_b);
-
+void		clean_stack(t_stack *stack);
 #endif

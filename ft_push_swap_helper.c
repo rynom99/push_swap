@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 19:25:20 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 18:08:07 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_config	split_args(
 					int argc, char *argv[argc], char ***arr, int *size);
 static int		str_to_tuple(
 					int index, t_stack *stack, t_tuple **tuple, void *arr);
-static void		manage_adaptive_mode(t_config *config, t_stack *a);
+static void		manage_adaptive_mode(t_config *config);
 
 t_config	init_app(
 	t_stack *stack_a,
@@ -32,19 +32,19 @@ t_config	init_app(
 	config = split_args(argc, argv, &arr, &size);
 	if (!config.is_valid)
 		return (config);
-	if (!(init_stack(stack_a, size) != ERROR
-			&& init_stack(stack_b, size) != ERROR
-			&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR))
+	config.is_valid = init_stack(stack_a, size) != ERROR
+		&& init_stack(stack_b, size) != ERROR
+		&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR;
+	if (!config.is_valid)
 	{
-		free(stack_a->array);
-		if (stack_a->array != NULL)
-			free(stack_b->array);
-		config.is_valid = FALSE;
+		clean_stack(stack_a);
+		clean_stack(stack_b);
 		return (config);
 	}
+	config.disorder = ft_disorder(*stack_a);
 	stack_b->size = 0;
 	stack_b->end = 0;
-	manage_adaptive_mode(&config, stack_a);
+	manage_adaptive_mode(&config);
 	return (config);
 }
 
@@ -87,23 +87,20 @@ static int	init_stack(t_stack *stack, int size)
 	stack->start = 0;
 	stack->end = size - 1;
 	stack->max_size = size;
+	while (size--)
+		stack->array[size] = NULL;
 	return (1);
 }
 
-static void	manage_adaptive_mode(t_config *config, t_stack *a)
+static void	manage_adaptive_mode(t_config *config)
 {
-	float		disorder;
-
-	disorder = ft_disorder(*a);
 	if (config->mode == ADAPTIVE || config->is_bench_mode)
-		ft_printf("disorder = %d %", 100 * disorder);
+		ft_printf("disorder = %d %", 100 * config->disorder);
 	if (config->mode == ADAPTIVE)
 	{
-		if (disorder == 0)
-			config->mode = DUMB;
-		else if (disorder < 0.2)
+		if (config->disorder < 0.2)
 			config->mode = SIMPLE;
-		else if (disorder < 0.5)
+		else if (config->disorder < 0.5)
 			config->mode = MEDIUM;
 		else
 			config->mode = COMPLEX;
@@ -118,7 +115,7 @@ static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 	i = 0;
 	str = ((char **)arr)[index];
 	*tuple = malloc(sizeof(t_tuple));
-	if (*tuple == NULL)
+	if (*tuple == NULL && stack)
 		return (ERROR);
 	(*tuple)->rank = 0;
 	if (ft_str_to_int32(str, &((*tuple)->value)) == ERROR)

@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:36:03 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 20:26:30 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 17:48:18 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	sa(t_stack *a)
 	static int	i;
 
 	swap(a);
-	ft_log("sa\n");
+	ft_log("sa");
 	if (!ft_is_counter_locked(FALSE))
 		i++;
 	return (i);
@@ -43,7 +43,7 @@ int	sb(t_stack *b)
 	static int	i;
 
 	swap(b);
-	ft_log("sb\n");
+	ft_log("sb");
 	if (!ft_is_counter_locked(FALSE))
 		i++;
 	return (i);
@@ -55,7 +55,7 @@ int	ss(t_stack *a, t_stack *b)
 
 	swap(a);
 	swap(b);
-	ft_log("ss\n");
+	ft_log("ss");
 	if (!ft_is_counter_locked(FALSE))
 		i++;
 	return (i);

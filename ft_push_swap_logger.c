@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:49:20 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 19:24:27 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 18:08:31 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	fn(int a, t_stack *stack, t_tuple **tuple, void *extra)
 {
-	if (extra || 1)
+	if (extra || stack || 1)
 		ft_printf("{[%d]-> %d}, ", a, (*tuple)->value);
 	return (1);
 }

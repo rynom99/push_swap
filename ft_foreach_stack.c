@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 23:58:22 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 19:26:20 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 17:21:38 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,7 @@ int	ft_foreach_stack(
 	{
 		element = ft_get_stack_ref(stack, i);
 		if (fn(i, stack, element, extra) == ERROR)
-		{
-			while (i--)
-			{
-				element = ft_get_stack_ref(stack, i);
-				free(*element);
-			}
 			return (ERROR);
-		}
 		i++;
 	}
 	return (TRUE);

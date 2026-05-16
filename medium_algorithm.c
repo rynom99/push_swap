@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   agor1.c                                            :+:      :+:    :+:   */
+/*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 06:44:24 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/16 18:12:29 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	get_chunk_size(int n)
 	return (n / 20);
 }
 
-
 static int	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 {
 	int	i;
-	int j = 0;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (a->size > 0 && a->size != 3)
 	{
 
@@ -51,15 +51,16 @@ static int	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 			j++;
 		}
 	}
-	return(j);
+	return (j);
 }
 
 static int	return_to_a(t_stack *a, t_stack *b)
 {
 	int	max_rank;
 	int	pos;
-	int j = 0;
+	int	j;
 
+	j = 0;
 	while (b->size > 0)
 	{
 		max_rank = b->size - 1;
@@ -83,23 +84,22 @@ static int	return_to_a(t_stack *a, t_stack *b)
 	return (j);
 }
 
-
-
-
-void	medium_algo(t_stack *stack_a, t_stack *stack_b)
+void	medium_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b)
 {
 	int	chunk_size;
-	int j =0;
-	int k = 0;
+	int	j;
+	int	k;
 
-	if ( ft_disorder( *stack_a) == 0)
+	if (need_dumb_solution(cfg, stack_a))
+	{
+		dumb_solution(cfg, stack_a);
 		return ;
+	}
 	ft_set_ranks(stack_a);
 	chunk_size = get_chunk_size(stack_a->size);
 	j = push_to_b(stack_a, stack_b, chunk_size);
 	if (stack_a->size == 3)
-		case3(stack_a);
+		dumb_solution(cfg, stack_a);
 	k = return_to_a(stack_a, stack_b);
 	ft_printf("j + k = %d", j + k);
-
 }

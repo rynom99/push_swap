@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:11:52 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 20:33:06 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/16 17:48:51 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	pa(t_stack *a, t_stack *b)
 	if (a->size == a->max_size)
 		return (i);
 	push(a, pop(b));
-	ft_log("pa\n");
+	ft_log("pa");
 	if (!ft_is_counter_locked(FALSE))
 		i++;
 	return (i);
@@ -60,7 +60,7 @@ int	pb(t_stack *a, t_stack *b)
 	if (b->size == b->max_size)
 		return (i);
 	push(b, pop(a));
-	ft_log("pb\n");
+	ft_log("pb");
 	if (!ft_is_counter_locked(FALSE))
 		i++;
 	return (i);
