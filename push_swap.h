@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 21:58:10 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/17 18:47:29 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_strcmp(const char *s1, const char *s2);
 char		**ft_split(char const *s, char c);
+void		destory_str_arr(char ***arr);
 t_tuple		*ft_get_stack(t_stack *stack, int index);
 t_tuple		**ft_get_stack_ref(t_stack *stack, int index);
 int			ft_foreach_stack(

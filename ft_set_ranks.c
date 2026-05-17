@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/15 17:08:41 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/17 18:58:11 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	ft_set_ranks(t_stack *a)
 	bubble_sort(temp, a);
 	compare_stack_values_to_sorted_array(a, temp);
 	free(temp);
+	temp = NULL;
 }
 // int compute_disorder(stack a):
 // mistakes = 0

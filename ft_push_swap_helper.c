@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/16 21:53:38 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/17 19:56:52 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_config	split_args(
 					int argc, char *argv[argc], char ***arr, int *size);
 static int		str_to_tuple(
 					int index, t_stack *stack, t_tuple **tuple, void *arr);
-static void		manage_adaptive_mode(t_config *config);
+static void		manage_flags(int *argc, char ***argv, t_config *config);
 
 t_config	init_app(
 	t_stack *stack_a,
@@ -30,13 +30,14 @@ t_config	init_app(
 	int			size;
 
 	config = split_args(argc, argv, &arr, &size);
-	if (!config.is_valid)
+	if (!config.is_valid)	
 		return (config);
 	config.is_valid = init_stack(stack_a, size) != ERROR
 		&& init_stack(stack_b, size) != ERROR
 		&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR;
 	if (!config.is_valid)
 	{
+		destory_str_arr(&arr);
 		clean_stack(stack_a);
 		clean_stack(stack_b);
 		return (config);
@@ -44,38 +45,62 @@ t_config	init_app(
 	config.disorder = ft_disorder(*stack_a);
 	stack_b->size = 0;
 	stack_b->end = 0;
-	manage_adaptive_mode(&config);
+	if (!config.is_bench_mode)
+		ft_log_ops(TRUE);
 	return (config);
 }
 
 static t_config	split_args(
 	int argc, char *argv[argc], char ***arr, int *size)
 {
+	char		**str;
 	t_config	config;
 	int			i;
 
 	i = 0;
 	config.is_valid = TRUE;
-	if (!ft_strcmp(argv[i], "--bench") && ++i)
-		config.is_bench_mode = TRUE;
-	if (!ft_strcmp(argv[i], "--simple") && ++i)
-		config.mode = SIMPLE;
-	else if (!ft_strcmp(argv[i], "--medium") && ++i)
-		config.mode = MEDIUM;
-	else if (!ft_strcmp(argv[i], "--complex") && ++i)
-		config.mode = COMPLEX;
-	else if (!ft_strcmp(argv[i], "--adaptive") && ++i)
-		config.mode = ADAPTIVE;
-	else
-		config.mode = ADAPTIVE;
+	manage_flags(&argc, &argv, &config);
 	*arr = NULL;
 	while (argc - i)
 	{
-		set_arr(arr, join_arr(*arr, ft_split(argv[i], ' ')));
+		str = ft_split(argv[i], ' ');
+		if (!str || *str == 0)
+		{
+			destory_str_arr(&str);
+			config.is_valid = FALSE;
+			return (config);
+		}
+		set_arr(arr, join_arr(*arr, str));
 		i++;
 	}
 	*size = ft_arr_len(*arr);
 	return (config);
+}
+
+static void	manage_flags(int *argc, char **argv[*argc], t_config *config)
+{
+	int	i;
+
+	i = 0;
+	if (!(argc - i))
+		return ;
+	else if (!ft_strcmp((*argv)[i], "--bench") && ++i)
+		config->is_bench_mode = TRUE;
+	if (!(argc - i))
+		(void)0;
+	else if (!ft_strcmp((*argv)[i], "--simple") && ++i)
+		config->mode = SIMPLE;
+	else if (!ft_strcmp((*argv)[i], "--medium") && ++i)
+		config->mode = MEDIUM;
+	else if (!ft_strcmp((*argv)[i], "--complex") && ++i)
+		config->mode = COMPLEX;
+	else if (!ft_strcmp((*argv)[i], "--adaptive") && ++i)
+		config->mode = ADAPTIVE;
+	else
+		config->mode = ADAPTIVE;
+
+	*argv = *argv + i;
+	*argc = *argc - i;
 }
 
 static int	init_stack(t_stack *stack, int size)
@@ -92,29 +117,10 @@ static int	init_stack(t_stack *stack, int size)
 	return (1);
 }
 
-static void	manage_adaptive_mode(t_config *config)
-{
-	if (!config->is_bench_mode)
-		ft_log_ops(TRUE);
-	if (config->mode == ADAPTIVE || config->is_bench_mode)
-		ft_printf("disorder = %d %", 100 * ((int)config->disorder));
-	if (config->mode == ADAPTIVE)
-	{
-		if (config->disorder < 0.2)
-			config->mode = SIMPLE;
-		else if (config->disorder < 0.5)
-			config->mode = MEDIUM;
-		else
-			config->mode = COMPLEX;
-	}
-}
-
 static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 {
-	int			i;
 	char		*str;
 
-	i = 0;
 	str = ((char **)arr)[index];
 	*tuple = malloc(sizeof(t_tuple));
 	if (*tuple == NULL && stack)
@@ -125,6 +131,15 @@ static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 		free(*tuple);
 		*tuple = NULL;
 		return (ERROR);
+	}
+	while (index--)
+	{
+		if (ft_get_stack(stack, index)->value == (*tuple)->value)
+		{
+			free(*tuple);
+			*tuple = NULL;
+			return (ERROR);
+		}
 	}
 	return (0);
 }

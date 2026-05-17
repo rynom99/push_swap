@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:11:27 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/15 15:59:44 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/17 19:20:51 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int		get_nr_str(char const *s, char c);
 static size_t	strlen_until_char(const char *s, char c);
-static int		is_clean_arr(char **arr, int size);
+static int		is_clean_arr(char ***arr, int size);
 
 char	**ft_split(char const *s, char c)
 {
@@ -35,13 +35,29 @@ char	**ft_split(char const *s, char c)
 		while (*ptr == c)
 			ptr++;
 		arr[i] = malloc(sizeof(char) * strlen_until_char(ptr, c) + 1);
-		if (!is_clean_arr(arr, i))
+		if (!is_clean_arr(&arr, i))
 			return (NULL);
 		ft_strlcpy(arr[i], ptr, strlen_until_char(ptr, c) + 1);
 		ptr += strlen_until_char(ptr, c);
 		i++;
 	}
 	return (arr);
+}
+
+void	destory_str_arr(char	***arr)
+{
+	char	*element;
+
+	if (!arr || !*arr)
+		return ;
+	while (**arr == 0)
+	{
+		element = **arr;
+		**arr = **arr + 1;
+		free(element);
+	}
+	free(*arr);
+	*arr = NULL;
 }
 
 static int	get_nr_str(char const *s, char c)
@@ -77,12 +93,16 @@ static size_t	strlen_until_char(const char *s, char c)
 	return (len);
 }
 
-static int	is_clean_arr(char **arr, int size)
+static int	is_clean_arr(char ***arr, int size)
 {
-	if (arr[size])
+	if ((*arr)[size])
 		return (1);
 	while (size--)
-		free(arr[size]);
-	free(arr);
+	{
+		free((*arr)[size]);
+		(*arr)[size] = NULL;
+	}
+	free(*arr);
+	(*arr) = NULL;
 	return (0);
 }
