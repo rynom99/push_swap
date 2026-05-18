@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 17:28:24 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/17 19:03:20 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 21:57:32 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	clean_stack(t_stack *stack)
 	stack->max_size = 0;
 }
 
-void	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
+int	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
 {
 	if (ops == SA)
 		sa(a);
 	else if (ops == SB)
-		sb(a);
+		sb(b);
 	else if (ops == SS)
 		ss(a, b);
 	else if (ops == PA)
@@ -50,7 +50,7 @@ void	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
 	else if (ops == RA)
 		ra(a);
 	else if (ops == RB)
-		rb(a);
+		rb(b);
 	else if (ops == RR)
 		rr(a, b);
 	else if (ops == RRA)
@@ -59,6 +59,8 @@ void	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
 		rrb(b);
 	else if (ops == RRR)
 		rrr(a, b);
+
+	return (TRUE);
 }
 
 static int	combine_ops(enum e_ops last_ops, enum e_ops ops,
@@ -67,25 +69,22 @@ static int	combine_ops(enum e_ops last_ops, enum e_ops ops,
 	if ((last_ops == SA && ops == SB) || (last_ops == SB && ops == SA))
 	{
 		ss(a, b);
-		last_ops = LAST;
 		return (TRUE);
 	}
 	if ((last_ops == RA && ops == RB) || (last_ops == RB && ops == RA))
 	{
 		rr(a, b);
-		last_ops = LAST;
 		return (TRUE);
 	}
 	if ((last_ops == RRA && ops == RRB) || (last_ops == RRB && ops == RRA))
 	{
 		rrr(a, b);
-		last_ops = LAST;
 		return (TRUE);
 	}
 	return (FALSE);
 }
 
-void	ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b)
+int	ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b)
 {
 	static enum e_ops	last_ops;
 
@@ -93,7 +92,7 @@ void	ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b)
 			|| ops == RRA || ops == RRB) && last_ops == LAST)
 	{
 		last_ops = ops;
-		return ;
+		return (TRUE);
 	}
 	else if (ops == LAST)
 		ft_execute(last_ops, a, b);
@@ -104,4 +103,5 @@ void	ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b)
 		ft_execute(last_ops, a, b);
 		last_ops = ops;
 	}
+	return (TRUE);
 }

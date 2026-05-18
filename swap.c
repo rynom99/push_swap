@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:36:03 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 20:20:53 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 16:56:40 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	swap(t_stack *stack)
 	t_tuple	*second;
 	t_tuple	temp;
 
-	if (!stack || stack->size < 2)
-		return ;
 	first = ft_get_stack(stack, 0);
 	second = ft_get_stack(stack, 1);
 	temp = *first;
@@ -31,7 +29,7 @@ int	sa(t_stack *a)
 {
 	static int	i;
 
-	if (!a)
+	if (a == NULL || a->size < 2)
 		return (i);
 	swap(a);
 	ft_log("sa");
@@ -42,7 +40,7 @@ int	sb(t_stack *b)
 {
 	static int	i;
 
-	if (!b)
+	if (b == NULL || b->size < 2)
 		return (i);
 	swap(b);
 	ft_log("sb");
@@ -53,7 +51,7 @@ int	ss(t_stack *a, t_stack *b)
 {
 	static int	i;
 
-	if (!a || !b)
+	if (a == NULL || a->size < 2 || b == NULL || b->size < 2)
 		return (i);
 	swap(a);
 	swap(b);

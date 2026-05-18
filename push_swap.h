@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/17 18:47:29 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:50:59 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ int			rra(t_stack *a);
 int			rrb(t_stack *b);
 int			rrr(t_stack *a, t_stack *b);
 void		ft_set_ranks(t_stack *a);
-void		ft_execute(enum e_ops ops, t_stack *a, t_stack *b);
-void		ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b);
+int			ft_execute(enum e_ops ops, t_stack *a, t_stack *b);
+int			ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b);
 void		simple_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		medium_algorithm(t_stack *stack_a, t_stack *stack_b);
-void		case2_algorithm(t_stack *a);
-void		case3_algorithm(t_stack *a);
+void		case2_algorithm(t_stack *stack_a, t_stack *stack_b);
+void		case3_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		print_stack(t_stack stack_a, t_stack stack_b);
 t_config	init_app(
 				t_stack *stack_a,

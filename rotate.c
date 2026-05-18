@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 16:41:49 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 20:20:02 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:22:55 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ra(t_stack *a)
 {
 	static int	i;
 
-	if (!a)
+	if (a == NULL || a->size < 2)
 		return (i);
 	rotate(a);
 	ft_log("ra");
@@ -46,7 +46,7 @@ int	rb(t_stack *b)
 {
 	static int	i;
 
-	if (!b)
+	if (b == NULL || b->size < 2)
 		return (i);
 	rotate(b);
 	ft_log("rb");
@@ -57,7 +57,7 @@ int	rr(t_stack *a, t_stack *b)
 {
 	static int	i;
 
-	if (!a || !b)
+	if (a == NULL || a->size < 2 || b == NULL || b->size < 2)
 		return (i);
 	rotate(a);
 	rotate(b);

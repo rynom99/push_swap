@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:58:01 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 19:21:08 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:49:44 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,23 @@ void	simple_algorithm(t_stack *stack_a, t_stack *stack_b)
 		ft_foreach_stack(stack_a, get_idx_minimum_value, &idx);
 		if (idx < (stack_a->size / 2))
 			while (idx--)
-				ra(stack_a);
+				ft_execute(RA, stack_a, stack_b);
 		else
 		{
 			idx = stack_a->size - idx;
 			while (idx--)
-				rra(stack_a);
+				ft_execute(RRA, stack_a, stack_b);
 		}
-		pb(stack_a, stack_b);
+		ft_execute(PB, stack_a, stack_b);
 	}
 	if (stack_a->size == 3)
-		case3_algorithm(stack_a);
+		case3_algorithm(stack_a, stack_b);
 	else
-		case2_algorithm(stack_a);
+		case2_algorithm(stack_a, stack_b);
 	idx = stack_b->size;
 	while (idx--)
-		pa(stack_a, stack_b);
+		ft_execute(PA, stack_a, stack_b);
+	ft_execute(LAST, stack_a, stack_b);
 }
 
 static int	get_idx_minimum_value(

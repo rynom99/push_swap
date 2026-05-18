@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   dumb_algorithm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 22:18:25 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/16 19:05:43 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:49:44 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	case2_algorithm(t_stack *a)
+void	case2_algorithm(t_stack *a, t_stack *b)
 {
 	if (ft_get_stack(a, 0)->value > ft_get_stack(a, 1)->value)
-		ra(a);
+		ft_execute(RA, a, b);
 }
 
-void	case3_algorithm(t_stack *a)
+void	case3_algorithm(t_stack *a, t_stack *b)
 {
 	int	first;
 	int	second;
@@ -32,17 +32,17 @@ void	case3_algorithm(t_stack *a)
 	if (second < third)
 	{
 		if ((first > second) && (first < third))
-			sa(a);
+			ft_execute(SA, a, b);
 		else if ((first > second) && (first > third))
-			ra(a);
+			ft_execute(RA, a, b);
 	}
 	else if (second > third)
 	{
 		if ((first < second) && (first > third))
-			rra(a);
+			ft_execute(RRA, a, b);
 		else if ((first < second) && (first < third))
-			(sa(a) && ra(a));
+			(ft_execute(SA, a, b) && ft_execute(RA, a, b));
 		else if ((first > second) && (first > third))
-			(sa(a) && rra(a));
+			(ft_execute(SA, a, b) && ft_execute(RRA, a, b));
 	}
 }

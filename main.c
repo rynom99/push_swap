@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/17 18:51:55 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/18 22:42:31 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*get_strategy(t_config *cfg)
 
 static void	print_bench(t_config *cfg)
 {
-	ft_printf("[bench] disorder:	%i%%\n", (int)(cfg->disorder * 100));
+	ft_printf("[bench] disorder:	%i.%i%i%%\n", (int)(cfg->disorder * 100), (((int)(cfg->disorder * 10000) % 100) / 10),((int)(cfg->disorder * 10000) % 10));
 	ft_printf("[bench] strategy:	%s\n", get_strategy(cfg));
 	ft_printf("[bench] total_ops:	%i\n",
 		sa(NULL) + sb(NULL) + ss(NULL, NULL) + pa(NULL, NULL) + pb(NULL, NULL)
