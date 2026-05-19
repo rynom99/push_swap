@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 18:55:59 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:52:52 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ t_config	init_app(
 	if (!config.is_valid)
 	{
 		destory_str_arr(&arr);
-		clean_stack(stack_a);
-		clean_stack(stack_b);
 		return (config);
 	}
 	config.disorder = ft_disorder(*stack_a);

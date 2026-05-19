@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 17:47:07 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:05:53 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 
+# define SUCCESS 1
 # define TRUE 1
 # define FALSE 0
 # define ERROR -1
@@ -118,6 +119,6 @@ t_config	init_app(
 				int argc,
 				char *argv[argc]);
 int			find_rank_position(t_stack *stack, int target_rank);
-void		clean_stack(t_stack *stack);
+int			clean_stack(t_stack *stack);
 
 #endif

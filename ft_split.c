@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:11:27 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/17 19:20:51 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:14:34 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,15 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-void	destory_str_arr(char	***arr)
+void	destory_str_arr(char ***arr)
 {
-	char	*element;
+	int	i;
 
 	if (!arr || !*arr)
 		return ;
-	while (**arr == 0)
-	{
-		element = **arr;
-		**arr = **arr + 1;
-		free(element);
-	}
+	i = 0;
+	while ((*arr)[i])
+		free((*arr)[i++]);
 	free(*arr);
 	*arr = NULL;
 }

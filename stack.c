@@ -6,19 +6,19 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 17:28:24 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 18:56:43 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:54:10 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clean_stack(t_stack *stack)
+int	clean_stack(t_stack *stack)
 {
 	t_tuple	**row;
 	size_t	i;
 
 	if (stack->array == NULL)
-		return ;
+		return (SUCCESS);
 	i = stack->size;
 	while (i--)
 	{
@@ -33,6 +33,7 @@ void	clean_stack(t_stack *stack)
 	stack->end = 0;
 	stack->size = 0;
 	stack->max_size = 0;
+	return (SUCCESS);
 }
 
 int	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
