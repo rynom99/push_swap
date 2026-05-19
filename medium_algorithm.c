@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/18 22:23:06 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/19 16:33:55 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 	i = 0;
 	while (a->size > 0 && a->size != 3)
 	{
-		// ft_printf("a.rank =  %i,i = %i, chunk= %i\n",ft_get_stack(a, 0)->rank, i,chunk_size  );
-
 		if (ft_get_stack(a, 0)->rank <= i)
 			(ft_execute(PB, a, b) && i++);
 		else if ((ft_get_stack(a, 0)->rank <= (i + chunk_size))

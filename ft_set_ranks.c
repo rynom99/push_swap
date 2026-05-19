@@ -6,11 +6,40 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/17 18:58:11 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:30:10 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	partition(t_tuple **arr, int from_idx, int to_idx);
+static void	swap(t_tuple **arr, int idx1, int idx2);
+static void	ft_quicksort_tuple(t_tuple **arr, int from_idx, int to_idx);
+
+void	ft_set_ranks(t_stack *a)
+{
+	t_tuple	**temp_arr;
+	int		i;
+
+	temp_arr = malloc(sizeof(t_tuple *) * a->size);
+	if (!temp_arr)
+		return ;
+	i = 0;
+	while (i < a->size)
+	{
+		temp_arr[i] = ft_get_stack(a, i);
+		i++;
+	}
+	ft_quicksort_tuple(temp_arr, 0, i - 1);
+	i = 0;
+	while (i < a->size)
+	{
+		temp_arr[i]->rank = i;
+		i++;
+	}
+	free(temp_arr);
+	temp_arr = NULL;
+}
 
 int	find_rank_position(t_stack *stack, int target_rank)
 {
@@ -26,121 +55,44 @@ int	find_rank_position(t_stack *stack, int target_rank)
 	return (-1);
 }
 
-static void	bubble_sort( int *temp, t_stack *a)
+static void	ft_quicksort_tuple(t_tuple **arr, int from_idx, int to_idx)
 {
-	int	swap;
-	int	i;
-	int	j;
+	int	p_idx;
 
-	i = 0;
-	while (i < a->size - 1)
-	{
-		j = 0;
-		while (j < a->size - i - 1)
-		{
-			if (temp[j] > temp[j + 1])
-			{
-				swap = temp[j];
-				temp[j] = temp[j + 1];
-				temp[j + 1] = swap;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-static void	compare_stack_values_to_sorted_array(t_stack *a, int *temp)
-{
-	int		i;
-	int		j;
-	t_tuple	*current_item;
-
-	i = 0;
-	while (i < a->size)
-	{
-		current_item = ft_get_stack(a, i);
-		j = 0;
-		while (j < a->size)
-		{
-			if (current_item->value == temp[j])
-			{
-				current_item->rank = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	ft_set_ranks(t_stack *a)
-{
-	int	*temp;
-	int	i;
-
-	temp = malloc(sizeof(int) * a->size);
-	if (!temp)
+	if (from_idx >= to_idx)
 		return ;
-	i = 0;
-	while (i < a->size)
-	{
-		temp[i] = ft_get_stack(a, i)->value;
-		i++;
-	}
-	bubble_sort(temp, a);
-	compare_stack_values_to_sorted_array(a, temp);
-	free(temp);
-	temp = NULL;
+	p_idx = partition(arr, from_idx, to_idx);
+	ft_quicksort_tuple(arr, from_idx, p_idx - 1);
+	ft_quicksort_tuple(arr, p_idx + 1, to_idx);
 }
-// int compute_disorder(stack a):
-// mistakes = 0
-// total_pairs = 0
-// for i from 0 to size(a)-1:
-// for j from i+1 to size(a)-1:
-// total_pairs += 1
-// if a[i] > a[j]:
-// mistakes += 1
-// return (mistakes / total_pairs);
 
-//  first algorithem : check for the minimum element in the stak 
-// chek if it is closer to top or buttom
-// push it to the nearest eadge
-//  push it to stake b
+static int	partition(t_tuple **arr, int from_idx, int to_idx)
+{
+	int	l_idx;
+	int	r_idx;
 
-// int find_min_index(t_stack *a)
-// {
+	l_idx = from_idx;
+	r_idx = to_idx;
 
-//void	ft_set_ranks(t_stack *a)
+	while (l_idx < r_idx)
+	{
+		while (arr[l_idx]->value <= arr[from_idx]->value && l_idx <= to_idx - 1)
+			l_idx++;
+		while (arr[r_idx]->value > arr[from_idx]->value 
+			&& r_idx >= from_idx + 1)
+			r_idx--;
+		if (l_idx < r_idx)
+			swap(arr, l_idx, r_idx);
+	}
+	swap(arr, from_idx, r_idx);
+	return (r_idx);
+}
 
-//     int min_val = 2147483647; // INT_MAX
-//     int min_pos = -1;
-//     int current;
+static void	swap(t_tuple **arr, int idx1, int idx2)
+{
+	t_tuple	*temp;
 
-//     for (int i = 0; i < a->size; i++)
-//     {
-//         current = a->array[(a->start + i) % a->size];
-//         if (current < min_val)
-//         {
-//             min_val = current;
-//             min_pos = i; // Relative position from the 'start'
-//         }
-//     }
-//     return (min_pos);
-// }
-
-// int	find_minimum_number_index(t_stack a)
-// {
-// 	int	i;
-// 	int	small;
-
-// 	i = a.start;
-// 	small = a.array[a.start];
-// 	while (i < a.e)
-// 	{
-// 		if (a.array[i] < small)
-// 			small = i;
-// 		i ++;
-// 	}
-// 	return (small);
-// }
+	temp = arr[idx1];
+	arr[idx1] = arr[idx2];
+	arr[idx2] = temp;
+}
