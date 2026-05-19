@@ -1,71 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium_algorithm.c                                 :+:      :+:    :+:   */
+/*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/19 16:33:55 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/19 05:15:08 by malshare          #+#    #+#             */
+/*   Updated: 2026/05/19 17:46:20 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_chunk_size(int n);
-static void	push_to_b(t_stack *a, t_stack *b, int chunk_size);
-static void	return_to_a(t_stack *a, t_stack *b);
 
-void	medium_algorithm(t_stack *stack_a, t_stack *stack_b)
+static	int	get_pivot(t_stack *a)
 {
-	int	chunk_size;
-
-	if (stack_a->size == 3)
-	{
-		case3_algorithm(stack_a, stack_b);
-		return ;
-	}
-	if (stack_a->size == 2)
-	{
-		case2_algorithm(stack_a, stack_b);
-		return ;
-	}
-	ft_set_ranks(stack_a);
-	chunk_size = get_chunk_size(stack_a->size);
-	push_to_b(stack_a, stack_b, chunk_size);
-	if (stack_a->size == 3)
-		case3_algorithm(stack_a, stack_b);
-	return_to_a(stack_a, stack_b);
-	ft_execute(LAST, stack_a, stack_b);
-}
-
-static int	get_chunk_size(int n)
-{
-	if (n <= 100)
-		return (15);
-	if (n <= 500)
-		return (40);
-	return (n / 20);
-}
-
-static void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
-{
+	int	min;
+	int	max;
 	int	i;
 
+	if (a->size == 0)
+		return (0);
+	min = ft_get_stack(a, 0)->rank;
+	max = ft_get_stack(a, 0)->rank;
 	i = 0;
-	while (a->size > 0 && a->size != 3)
+	while (i < a->size)
 	{
-		if (ft_get_stack(a, 0)->rank <= i)
-			(ft_execute(PB, a, b) && i++);
-		else if ((ft_get_stack(a, 0)->rank <= (i + chunk_size))
-			&& (ft_get_stack(a, 0)->rank < a->max_size - 3))
-			(ft_execute(PB, a, b) && ft_execute(RB, a, b) && i++ );
-		else
-			ft_execute(RA, a, b);
+		if (ft_get_stack(a, i)->rank < min)
+			min = ft_get_stack(a, i)->rank;
+		if (ft_get_stack(a, i)->rank > max)
+			max = ft_get_stack(a, i)->rank;
+		i++;
+	}
+	return ((min + max) / 2);
+}
+
+static void	partition_to_b(t_stack *a, t_stack *b)
+{
+	int	pivot;
+	int	initial_size;
+
+	while (a->size > 3)
+	{
+		pivot = get_pivot(a);
+		initial_size = a->size;
+		while (initial_size-- > 0 && a->size > 3)
+		{
+			if (ft_get_stack(a, 0)->rank <= pivot)
+			{
+				pb(a, b);
+				if (b->size > 1 && ft_get_stack(b, 0)->rank < (pivot / 2))
+					rb(b);
+			}
+			else
+				ra(a);
+		}
 	}
 }
 
-static void	return_to_a(t_stack *a, t_stack *b)
+static void	smart_return(t_stack *a, t_stack *b)
 {
 	int	max_rank;
 	int	pos;
@@ -74,12 +67,26 @@ static void	return_to_a(t_stack *a, t_stack *b)
 	{
 		max_rank = b->size - 1;
 		pos = find_rank_position(b, max_rank);
+
 		if (pos <= b->size / 2)
 			while (pos-- > 0)
-				ft_execute(RB, a, b);
+				rb(b);
 		else
-			while (pos++ < b->size)
-				ft_execute(RRB, a, b);
-		ft_execute(PA, a, b);
+		{
+			pos = b->size - pos;
+			while (pos-- > 0)
+				rrb(b);
+		}
+		pa(a, b);
 	}
+}
+
+void	medium_algorithm(t_stack *stack_a, t_stack *stack_b)
+{
+	if (ft_disorder(*stack_a) == 0)
+		return ;
+	ft_set_ranks(stack_a);
+	partition_to_b(stack_a, stack_b);
+	case3_algorithm(stack_a, stack_b);
+	smart_return(stack_a, stack_b);
 }

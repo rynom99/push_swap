@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 17:15:41 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:47:07 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int			ft_execute(enum e_ops ops, t_stack *a, t_stack *b);
 int			ft_lazy_execute(enum e_ops ops, t_stack *a, t_stack *b);
 void		simple_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		medium_algorithm(t_stack *stack_a, t_stack *stack_b);
+void		complex_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		case2_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		case3_algorithm(t_stack *stack_a, t_stack *stack_b);
 void		print_stack(t_stack stack_a, t_stack stack_b);
@@ -118,6 +119,5 @@ t_config	init_app(
 				char *argv[argc]);
 int			find_rank_position(t_stack *stack, int target_rank);
 void		clean_stack(t_stack *stack);
-void		complex_algo(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 05:42:48 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:47:34 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[argc])
 		|| (config.mode == ADAPTIVE && config.disorder < 0.5))
 		medium_algorithm(&stack_a, &stack_b);
 	else if (config.mode == COMPLEX || config.mode == ADAPTIVE)
-		complex_algo(&stack_a, &stack_b);
+		complex_algorithm(&stack_a, &stack_b);
 	if (config.is_bench_mode)
 		print_bench(&config);
 	return (0);

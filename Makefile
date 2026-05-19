@@ -28,10 +28,10 @@ FILES = ft_get_stack.c \
 	reverse_rotate.c \
 	simple_algorithm.c \
 	medium_algorithm.c \
+	complex_algorithm.c \
 	dumb_algorithm.c \
 	ft_push_swap_helper.c \
 	ft_push_swap_logger.c \
-	complex.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)
