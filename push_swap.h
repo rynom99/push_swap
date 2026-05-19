@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 22:05:53 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:38:46 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_printf(const char *str, ...);
 int			ft_str_to_int32(const char *nptr, int *value);
 int			ft_isdigit(int c);
 char		**join_arr(char **arr1, char **arr2);
-void		set_arr(char ***str, char **value);
+int			set_arr(char ***str, char **value);
 int			ft_arr_len(void *arr);
 int			ft_log_ops(int enable);
 void		ft_log(char *s);

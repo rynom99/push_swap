@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap_helper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 22:52:52 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:39:50 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ static t_config	split_args(
 	while (argc - i)
 	{
 		str = ft_split(argv[i], ' ');
-		if (!str || *str == 0)
+		if (!str || *str == 0 || !set_arr(arr, join_arr(*arr, str)))
 		{
 			destory_str_arr(&str);
+			destory_str_arr(arr);
 			config.is_valid = FALSE;
 			return (config);
 		}
-		set_arr(arr, join_arr(*arr, str));
+		free(str);
 		i++;
 	}
 	*size = ft_arr_len(*arr);
