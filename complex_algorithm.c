@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_algorithm.c                                   :+:      :+:    :+:   */
+/*   complex_algorithm.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:39:33 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/19 17:46:52 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:53:36 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ void	complex_algorithm(t_stack *stack_a, t_stack *stack_b)
 
 static int	get_chunk_size(int n)
 {
-	if (n <= 100)
-		return (15);
-	if (n <= 500)
-		return (40);
-	return (n / 20);
+	if (n <= 10)
+		return (2);
+	return ((int)(((float)n * 0.0625) + 8.75));
 }
 
 static void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
@@ -59,7 +57,7 @@ static void	push_to_b(t_stack *a, t_stack *b, int chunk_size)
 			(ft_execute(PB, a, b) && i++);
 		else if ((ft_get_stack(a, 0)->rank <= (i + chunk_size))
 			&& (ft_get_stack(a, 0)->rank < a->max_size - 3))
-			(ft_execute(PB, a, b) && ft_execute(RB, a, b) && i++ );
+			(ft_execute(PB, a, b) && ft_execute(RB, a, b) && i++);
 		else
 			ft_execute(RA, a, b);
 	}

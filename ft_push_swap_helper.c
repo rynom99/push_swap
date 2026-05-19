@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/17 19:56:52 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:55:59 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_config	init_app(
 	int			size;
 
 	config = split_args(argc, argv, &arr, &size);
-	if (!config.is_valid)	
+	if (!config.is_valid)
 		return (config);
 	config.is_valid = init_stack(stack_a, size) != ERROR
 		&& init_stack(stack_b, size) != ERROR
@@ -98,7 +98,8 @@ static void	manage_flags(int *argc, char **argv[*argc], t_config *config)
 		config->mode = ADAPTIVE;
 	else
 		config->mode = ADAPTIVE;
-
+	if (!ft_strcmp((*argv)[i], "--bench") && ++i)
+		config->is_bench_mode = TRUE;
 	*argv = *argv + i;
 	*argc = *argc - i;
 }

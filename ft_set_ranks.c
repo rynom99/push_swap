@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:01:26 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/19 17:30:10 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:55:32 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,11 @@ static int	partition(t_tuple **arr, int from_idx, int to_idx)
 
 	l_idx = from_idx;
 	r_idx = to_idx;
-
 	while (l_idx < r_idx)
 	{
 		while (arr[l_idx]->value <= arr[from_idx]->value && l_idx <= to_idx - 1)
 			l_idx++;
-		while (arr[r_idx]->value > arr[from_idx]->value 
+		while (arr[r_idx]->value > arr[from_idx]->value
 			&& r_idx >= from_idx + 1)
 			r_idx--;
 		if (l_idx < r_idx)

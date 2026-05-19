@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 17:47:34 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:57:29 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[argc])
 		|| (config.mode == ADAPTIVE && config.disorder < 0.2))
 		simple_algorithm(&stack_a, &stack_b);
 	else if (config.mode == MEDIUM
-		|| (config.mode == ADAPTIVE && config.disorder < 0.5))
+		|| (config.mode == ADAPTIVE && config.disorder < 0.3))
 		medium_algorithm(&stack_a, &stack_b);
 	else if (config.mode == COMPLEX || config.mode == ADAPTIVE)
 		complex_algorithm(&stack_a, &stack_b);
@@ -55,7 +55,7 @@ static char	*get_strategy(t_config *cfg)
 	{
 		if (cfg->disorder < 0.2)
 			return ("Adaptive / O(n2)");
-		else if (cfg->disorder < 0.5)
+		else if (cfg->disorder < 0.3)
 			return ("Adaptive / O(n√n)");
 		else
 			return ("Adaptive / O(nlogn)");
@@ -65,7 +65,9 @@ static char	*get_strategy(t_config *cfg)
 
 static void	print_bench(t_config *cfg)
 {
-	ft_printf("[bench] disorder:	%i.%i%i%%\n", (int)(cfg->disorder * 100), (((int)(cfg->disorder * 10000) % 100) / 10),((int)(cfg->disorder * 10000) % 10));
+	ft_printf("[bench] disorder:	%i.%i%i%%\n", (int)(cfg->disorder * 100),
+		(((int)(cfg->disorder * 10000) % 100) / 10),
+		((int)(cfg->disorder * 10000) % 10));
 	ft_printf("[bench] strategy:	%s\n", get_strategy(cfg));
 	ft_printf("[bench] total_ops:	%i\n",
 		sa(NULL) + sb(NULL) + ss(NULL, NULL) + pa(NULL, NULL) + pb(NULL, NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 17:28:24 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/18 21:57:32 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:56:43 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	ft_execute(enum e_ops ops, t_stack *a, t_stack *b)
 		rrb(b);
 	else if (ops == RRR)
 		rrr(a, b);
-
 	return (TRUE);
 }
 

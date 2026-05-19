@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex.c                                          :+:      :+:    :+:   */
+/*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 05:15:08 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/19 17:46:20 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:54:42 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static	int	get_pivot(t_stack *a)
 {
@@ -67,7 +66,6 @@ static void	smart_return(t_stack *a, t_stack *b)
 	{
 		max_rank = b->size - 1;
 		pos = find_rank_position(b, max_rank);
-
 		if (pos <= b->size / 2)
 			while (pos-- > 0)
 				rb(b);
