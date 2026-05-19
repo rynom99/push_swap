@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/18 20:50:59 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/19 05:40:09 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,6 @@ t_config	init_app(
 				char *argv[argc]);
 int			find_rank_position(t_stack *stack, int target_rank);
 void		clean_stack(t_stack *stack);
+void		complex_algo(t_stack *stack_a, t_stack *stack_b);
+
 #endif

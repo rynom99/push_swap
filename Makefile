@@ -31,6 +31,7 @@ FILES = ft_get_stack.c \
 	dumb_algorithm.c \
 	ft_push_swap_helper.c \
 	ft_push_swap_logger.c \
+	complex.c \
 	main.c
 
 OBJECTS = $(FILES:.c=.o)
