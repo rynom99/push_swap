@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_fd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 14:14:34 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 22:39:33 by mnououal         ###   ########.fr       */
+/*   Created: 2026/05/20 22:32:08 by mnououal          #+#    #+#             */
+/*   Updated: 2026/05/20 22:38:27 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	ft_putstr(char *s)
+int	ft_fd(int *new_fd)
 {
-	int	len;
+	static int	fd;
 
-	if (!s)
-	{
-		write(ft_fd(NULL), "(null)", 6);
-		return (6);
-	}
-	len = ft_strlen(s);
-	write(ft_fd(NULL), s, len);
-	return (len);
+	if (new_fd)
+		fd = *new_fd;
+	else if (fd == 0)
+		fd = 1;
+	return (fd);
 }

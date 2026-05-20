@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 22:56:15 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:04:00 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ static char	*get_strategy(t_config *cfg)
 
 static void	print_bench(t_config *cfg)
 {
+	int	fd;
+
+	fd = 2;
+	ft_fd(&fd);
 	ft_printf("[bench] disorder:	%i.%i%i%%\n", (int)(cfg->disorder * 100),
 		(((int)(cfg->disorder * 10000) % 100) / 10),
 		((int)(cfg->disorder * 10000) % 10));
@@ -99,4 +103,6 @@ static void	print_bench(t_config *cfg)
 		sa(NULL), sb(NULL), ss(NULL, NULL), pa(NULL, NULL), pb(NULL, NULL));
 	ft_printf("[bench] ra:	%i	rb:	%i	rr:	%i	rrb:	%i	rrr:	%i\n",
 		ra(NULL), rb(NULL), rr(NULL, NULL), rrb(NULL), rrr(NULL, NULL));
+	fd = 1;
+	ft_fd(&fd);
 }

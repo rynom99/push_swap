@@ -19,17 +19,17 @@ int	ft_putnbr(int len, int n)
 
 	if (n == INT_MIN)
 	{
-		write(1, "-2147483648", 11);
+		write(ft_fd(NULL), "-2147483648", 11);
 		return (11);
 	}
 	if (n < 0 && ++len)
 	{
 		n = n * -1;
-		write(1, "-", 1);
+		write(ft_fd(NULL), "-", 1);
 	}
 	if (n > 9)
 		len = ft_putnbr(len, n / 10);
 	c = (n % 10) + '0';
-	write(1, &c, 1);
+	write(ft_fd(NULL), &c, 1);
 	return (++len);
 }

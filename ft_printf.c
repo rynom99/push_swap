@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:43:56 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/13 19:32:29 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:39:33 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	ft_putnbr_usinged(int len, long n)
 	if (n > 9)
 		len = ft_putnbr_usinged(len, n / 10);
 	c = (n % 10) + '0';
-	write(1, &c, 1);
+	write(ft_fd(NULL), &c, 1);
 	return (++len);
 }
 

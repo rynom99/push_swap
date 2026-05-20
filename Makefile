@@ -13,6 +13,7 @@ FILES = ft_get_stack.c \
 	ft_printf.c \
 	ft_putstr.c \
 	ft_putnbr.c \
+	ft_fd.c \
 	ft_putchar.c \
 	ft_str_to_int32.c \
 	ft_arr_len.c \

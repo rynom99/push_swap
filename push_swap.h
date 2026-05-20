@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 01:03:26 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 22:55:05 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:03:57 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int			ft_putstr(char *s);
 int			ft_putnbr(int len, int n);
 int			ft_putchar(char c);
 int			ft_printf(const char *str, ...);
+int			ft_fd(int *new_fd);
 int			ft_str_to_int32(const char *nptr, int *value);
 int			ft_isdigit(int c);
 char		**join_arr(char **arr1, char **arr2);
