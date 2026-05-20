@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap_helper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 00:39:50 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/20 02:14:11 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ t_config	init_app(
 	config.is_valid = init_stack(stack_a, size) != ERROR
 		&& init_stack(stack_b, size) != ERROR
 		&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR;
-	if (!config.is_valid)
-	{
-		destory_str_arr(&arr);
+	destory_str_arr(&arr);
+	if (!config.is_valid)	
 		return (config);
-	}
 	config.disorder = ft_disorder(*stack_a);
 	stack_b->size = 0;
 	stack_b->end = 0;
@@ -132,6 +130,8 @@ static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 		*tuple = NULL;
 		return (ERROR);
 	}
+	free(str);
+	((char **)arr)[index] = NULL;
 	while (index--)
 	{
 		if (ft_get_stack(stack, index)->value == (*tuple)->value)
