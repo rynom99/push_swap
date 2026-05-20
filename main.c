@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 23:04:00 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:25:35 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char *argv[argc])
 	{
 		clean_stack(&stack_a);
 		clean_stack(&stack_b);
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (ERROR);
 	}
 	apply_algorithm(&config, &stack_a, &stack_b);
