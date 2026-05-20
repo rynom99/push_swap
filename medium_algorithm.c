@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 05:15:08 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/19 18:54:42 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 19:20:56 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	partition_to_b(t_stack *a, t_stack *b)
 	int	pivot;
 	int	initial_size;
 
-	while (a->size > 3)
+	while (a->size > 5)
 	{
 		pivot = get_pivot(a);
 		initial_size = a->size;
@@ -85,6 +85,6 @@ void	medium_algorithm(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	ft_set_ranks(stack_a);
 	partition_to_b(stack_a, stack_b);
-	case3_algorithm(stack_a, stack_b);
+	case5_algorithm(stack_a, stack_b);
 	smart_return(stack_a, stack_b);
 }

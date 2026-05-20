@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:34:53 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/19 22:59:49 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:56:15 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	apply_algorithm(t_config *cfg, t_stack *stack_a, t_stack *stack_b)
 		|| (cfg->mode == ADAPTIVE && cfg->disorder < 0.2))
 		simple_algorithm(stack_a, stack_b);
 	else if (cfg->mode == MEDIUM
-		|| (cfg->mode == ADAPTIVE && cfg->disorder < 0.3))
+		|| (cfg->mode == ADAPTIVE && cfg->disorder < 0.5))
 		medium_algorithm(stack_a, stack_b);
 	else if (cfg->mode == COMPLEX || cfg->mode == ADAPTIVE)
 		complex_algorithm(stack_a, stack_b);
@@ -78,7 +78,7 @@ static char	*get_strategy(t_config *cfg)
 	{
 		if (cfg->disorder < 0.2)
 			return ("Adaptive / O(n2)");
-		else if (cfg->disorder < 0.3)
+		else if (cfg->disorder < 0.5)
 			return ("Adaptive / O(n√n)");
 		else
 			return ("Adaptive / O(nlogn)");

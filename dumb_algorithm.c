@@ -6,7 +6,7 @@
 /*   By: malshare <malshare@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 22:18:25 by malshare          #+#    #+#             */
-/*   Updated: 2026/05/18 20:49:44 by malshare         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:23:56 by malshare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,67 @@ void	case3_algorithm(t_stack *a, t_stack *b)
 			(ft_execute(SA, a, b) && ft_execute(RA, a, b));
 		else if ((first > second) && (first > third))
 			(ft_execute(SA, a, b) && ft_execute(RRA, a, b));
+	}
+}
+
+static int	get_minimum_index(t_stack *a)
+{
+	int	min;
+	int	min_indx;
+	int	i;
+	int	size;
+
+	size = a->size;
+	i = 0;
+	min_indx = 0;
+	min = ft_get_stack(a, 0)->value;
+	while (size--)
+	{
+		if (min > ft_get_stack(a, i)->value)
+		{
+			min = ft_get_stack(a, i)->value;
+			min_indx = i;
+		}
+		i++;
+	}
+	return (min_indx);
+}
+
+static void	helper_sorting(t_stack *a, t_stack *b)
+{
+	int	min_indx;
+	int	i;
+
+	i = 0;
+	min_indx = get_minimum_index(a);
+	while (i < a->size)
+	{
+		if (i == min_indx)
+		{
+			pb(a, b);
+			break ;
+		}
+		ra(a);
+		i++;
+	}
+}
+
+void	case5_algorithm(t_stack *a, t_stack *b)
+{
+	if (a->size == 3)
+		case3_algorithm(a, b);
+	else if (a->size == 2)
+		case2_algorithm(a, b);
+	else if (a->size == 4)
+	{
+		helper_sorting(a, b);
+		case3_algorithm(a, b);
+		pa(a, b);
+	}
+	else if (a->size == 5)
+	{
+		helper_sorting(a, b);
+		case5_algorithm(a, b);
+		pa(a, b);
 	}
 }
