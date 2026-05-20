@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 02:14:11 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/20 19:16:13 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static t_config	split_args(
 	int			i;
 
 	i = 0;
-	config.is_valid = TRUE;
 	manage_flags(&argc, &argv, &config);
 	*arr = NULL;
 	while (argc - i)
@@ -79,6 +78,10 @@ static void	manage_flags(int *argc, char **argv[*argc], t_config *config)
 	int	i;
 
 	i = 0;
+	config->mode = ADAPTIVE;
+	config->is_bench_mode = FALSE;
+	config->is_valid = TRUE;
+	config->disorder = 0;
 	if (!(argc - i))
 		return ;
 	else if (!ft_strcmp((*argv)[i], "--bench") && ++i)
@@ -92,8 +95,6 @@ static void	manage_flags(int *argc, char **argv[*argc], t_config *config)
 	else if (!ft_strcmp((*argv)[i], "--complex") && ++i)
 		config->mode = COMPLEX;
 	else if (!ft_strcmp((*argv)[i], "--adaptive") && ++i)
-		config->mode = ADAPTIVE;
-	else
 		config->mode = ADAPTIVE;
 	if (!ft_strcmp((*argv)[i], "--bench") && ++i)
 		config->is_bench_mode = TRUE;
@@ -130,8 +131,6 @@ static int	str_to_tuple(int index, t_stack *stack, t_tuple **tuple, void *arr)
 		*tuple = NULL;
 		return (ERROR);
 	}
-	free(str);
-	((char **)arr)[index] = NULL;
 	while (index--)
 	{
 		if (ft_get_stack(stack, index)->value == (*tuple)->value)
