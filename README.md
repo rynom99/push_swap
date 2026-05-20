@@ -115,5 +115,4 @@ AI assistance was used only for documentation tasks in this repository. The READ
 - `push.c`, `swap.c`, `rotate.c`, `reverse_rotate.c` — operation implementations
 - `push_swap.h` — shared types and function declarations
 - `Makefile` — build commands
-- `checker_linux`, `pro_checker`, `push_swap_test_linux.sh` — validation and testing tools
 
