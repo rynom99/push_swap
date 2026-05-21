@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by \<mnououal\> and \<malshare\>.*
+*This project has been created as part of the 42 curriculum by \<mnououal\>, \<malshare\>.*
 
 # push_swap
 
@@ -96,8 +96,9 @@ The default adaptive mode selects the algorithm based on the input disorder calc
 
 ## Resources
 
-- Youtube
-- Unit test
+- [Markdown](https://www.markdownguide.org/basic-syntax/)
+- [Youtube](https://youtu.be/Hoixgm4-P4M?si=Qf7-GDQfOUpP0qoF)
+- [Unit test](https://github.com/gemartin99/Push-Swap-Tester) - to test functionality
 
 ### AI usage
 

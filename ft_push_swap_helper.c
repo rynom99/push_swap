@@ -6,7 +6,7 @@
 /*   By: mnououal <mnououal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 21:47:16 by mnououal          #+#    #+#             */
-/*   Updated: 2026/05/20 19:16:13 by mnououal         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:12:27 by mnououal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_config	init_app(
 		&& init_stack(stack_b, size) != ERROR
 		&& ft_foreach_stack(stack_a, str_to_tuple, arr) != ERROR;
 	destory_str_arr(&arr);
-	if (!config.is_valid)	
+	if (!config.is_valid)
 		return (config);
 	config.disorder = ft_disorder(*stack_a);
 	stack_b->size = 0;
